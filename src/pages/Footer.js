@@ -3,6 +3,7 @@ import '../css/Footer.css';
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaRegMessage } from "react-icons/fa6";
 import { CiGlobe } from "react-icons/ci";
+import { BiLocationPlus } from 'react-icons/bi';
 
 const Footer = () => {
   const logoUrl = `${process.env.PUBLIC_URL}/img/logo.png`;
@@ -44,9 +45,9 @@ const Footer = () => {
 
             {/* Center Section - QR & Logo */}
             <div className="hidden lg:flex flex-col items-center justify-center flex-shrink-0 mx-4 lg:mx-8 lg:mt-[-50px]">
-                 <img 
-                src='/img/logoGreen.png' 
-                alt="FIH Logo" 
+              <img
+                src='/img/logoGreen.png'
+                alt="FIH Logo"
                 className="h-12 lg:h-20 object-contain mt-3 lg:mt-1"
               />
               <div className="bg-white p-3 lg:p-4 rounded-lg shadow-lg">
@@ -57,27 +58,26 @@ const Footer = () => {
                 />
                 <p className="text-xs text-gray-600 mt-1 text-center">Scan QR</p>
               </div>
-           
+
             </div>
 
             {/* Right Contact - Traffic & Security */}
             <div className=" ml-4 contact-item flex-1 min-w-[35%] lg:min-w-0 text-center lg:text-right">
-              <span className="contact-label block text-lg font-semibold text-white mb-4">Traffic & Security</span>
+              <span className="contact-label block lg:text-lg text-xs ml-[-5px] font-semibold text-white mb-4 tracking-wider whitespace-nowrap">
+                Traffic & Security
+              </span>
               <div className="space-y-6 text-sm">
-                <div className="contact-detail flex items-center justify-center lg:justify-end lg:gap-10 gap-4 text-gray-300">
-                  <span className="log text-blue-400 "><FaPhoneAlt /></span>
-                  <div className="text-left">
-                    <span className="block text-black">+65 9795-7333</span>
-                    {/* <span>+65 9742-7333</span> */}
-                  </div>
+                <div className="contact-detail flex items-center justify-center lg:mr-8 mr-5 lg:justify-end   text-gray-300">
+                  <span className="log text-blue-400"><FaPhoneAlt /></span>
+                  <span className='text-black'>+65 9795-7333</span>
                 </div>
-                <div className="contact-email flex items-center justify-center lg:justify-end lg:gap-3  text-gray-300">
+                <div className="contact-email flex items-center justify-center lg:justify-end lg:gap-0   text-gray-300">
                   <span className="log text-blue-400"><CiGlobe /></span>
                   <span>security@fih.com.sg</span>
                 </div>
-                <div className="contact-email mr-4 flex items-center justify-center lg:justify-end gap-1 text-gray-300">
-                  <span className="log text-blue-400"><CiGlobe /></span>
-                  <div className="text-left ml-2">
+                <div className="contact-email mr-4  flex items-center justify-center lg:justify-end   text-gray-300">
+                  <span className="log text-blue-400 "><BiLocationPlus /></span>
+                  <div className="text-left ">
                     <span className="block">9 Eunos Ave 8A</span>
                     <span className="block">#02-00</span>
                     <span>Singapore 409461</span>
@@ -89,11 +89,11 @@ const Footer = () => {
             {/* Mobile QR Code - Below the contacts */}
             <div className="lg:hidden w-full flex flex-col items-center justify-center mt-[-50px] mb-[60px] lg:mb-0">
               <div className="bg-white p-3 rounded-lg shadow-lg">
-                 <img 
-                src='/img/logoGreen.png' 
-                alt="FIH Logo" 
-                className="h-10 object-contain mt-3"
-              />
+                <img
+                  src='/img/logoGreen.png'
+                  alt="FIH Logo"
+                  className="h-10 object-contain mt-3"
+                />
                 <img
                   src='/img/qr2.png'
                   alt="QR Code"
@@ -101,7 +101,7 @@ const Footer = () => {
                 />
                 <p className="text-xs text-gray-600 mt-1 text-center">Scan QR Code</p>
               </div>
-             
+
             </div>
           </div>
         </div>

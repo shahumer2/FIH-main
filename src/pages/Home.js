@@ -367,7 +367,7 @@ const CertificateCard = ({ cert, openModal }) => (
           </h1>
 
           <p className="text-xl md:text-2xl mb-8 text-white-800 font-light">
-            "Your Facility Matters"
+            "Excellence in Every Service, Confidence in Every Facility"
           </p>
 
           <p className="text-lg md:text-xl mb-12 max-w-3xl mx-auto leading-relaxed bg-white/10 backdrop-blur-sm p-6 rounded-lg">
