@@ -1,0 +1,40 @@
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Users from './pages/Users';
+import Settings from './pages/Settings';
+import About from './pages/About';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import SalesMarketingPage from './pages/SalesMarketing';
+import CrowdAndTrafficc from './pages/Sales/CrowdAndTrafficc';
+import AviationSpecialist from './pages/Sales/AviationSpecialist';
+import CriticalInfrastructure from './pages/Sales/CriticalInfrastructure';
+import EducationAndSchools from './pages/Sales/EducationAndSchools';
+import SpecialistTraining from './pages/Sales/SpecialistTraining';
+
+function App() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/salesmarketing" element={<SalesMarketingPage />} />
+        <Route path="/services/security-crowd-traffic-management" element={<CrowdAndTrafficc />} />
+        <Route path="/services/aviation-specialist" element={<AviationSpecialist />} />
+        <Route path="/services/critical-infrastructure-protection" element={<CriticalInfrastructure />} />
+        <Route path="/services/educational-institutions" element={<EducationAndSchools />} />
+        <Route path="/services/specialist-training" element={<SpecialistTraining />} />
+      </Routes>
+    </div>
+  );
+}
+
+export default App;
