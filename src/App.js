@@ -35,10 +35,7 @@ function App() {
         <Route path="/services/pest-control" element={<PestControl />} />
         <Route path="/services/landscaping" element={<Landscaping />} />
       
-        <Route path="/services/aviation-specialist" element={<AviationSpecialist />} />
-        <Route path="/services/critical-infrastructure-protection" element={<CriticalInfrastructure />} />
-        <Route path="/services/educational-institutions" element={<EducationAndSchools />} />
-        <Route path="/services/specialist-training" element={<SpecialistTraining />} />
+       
       </Routes>
     </div>
   );
