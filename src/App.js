@@ -14,6 +14,9 @@ import AviationSpecialist from './pages/Sales/AviationSpecialist';
 import CriticalInfrastructure from './pages/Sales/CriticalInfrastructure';
 import EducationAndSchools from './pages/Sales/EducationAndSchools';
 import SpecialistTraining from './pages/Sales/SpecialistTraining';
+import Cleaning from './pages/Sales/Cleaning';
+import PestControl from './pages/Sales/PestControl';
+import Landscaping from './pages/Sales/Landscaping';
 
 function App() {
   return (
@@ -28,6 +31,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/salesmarketing" element={<SalesMarketingPage />} />
         <Route path="/services/security-crowd-traffic-management" element={<CrowdAndTrafficc />} />
+        <Route path="/services/cleaning" element={<Cleaning />} />
+        <Route path="/services/pest-control" element={<PestControl />} />
+        <Route path="/services/landscaping" element={<Landscaping />} />
+      
         <Route path="/services/aviation-specialist" element={<AviationSpecialist />} />
         <Route path="/services/critical-infrastructure-protection" element={<CriticalInfrastructure />} />
         <Route path="/services/educational-institutions" element={<EducationAndSchools />} />

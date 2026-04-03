@@ -30,7 +30,7 @@ const Footer = () => {
               <div className="space-y-3 text-sm">
                 <div className="contact-detail flex items-center justify-center lg:justify-start gap-3 text-gray-300">
                   <span className="log text-blue-400"><FaPhoneAlt /></span>
-                  <span className='text-black'>+65 9795-7333</span>
+                  <span className='text-black'>+65 -------</span>
                 </div>
                 <div className="contact-website flex items-center justify-center lg:justify-start gap-3 text-gray-300">
                   <span className="log text-blue-400"><FaRegMessage /></span>
@@ -69,7 +69,7 @@ const Footer = () => {
               <div className="space-y-6 text-sm">
                 <div className="contact-detail flex items-center justify-center lg:mr-8 mr-5 lg:justify-end   text-gray-300">
                   <span className="log text-blue-400"><FaPhoneAlt /></span>
-                  <span className='text-black'>+65 9795-7333</span>
+                  <span className='text-black'>+65 ------------</span>
                 </div>
                 <div className="contact-email flex items-center justify-center lg:justify-end lg:gap-0   text-gray-300">
                   <span className="log text-blue-400"><CiGlobe /></span>

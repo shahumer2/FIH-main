@@ -178,38 +178,28 @@ const CrowdAndTrafficc = () => {
       <section className="pt-20 pb-5 text-white" style={{ backgroundColor: "#204b29" }}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+
             {/* Left Side - Batch Image */}
             <div className="relative flex justify-center lg:justify-start">
               <div className="relative">
-                {/* Clean batch container without green background */}
-                <div className="relative">
-                  {/* Subtle glow effect */}
-                  <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full blur-lg"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-full blur-lg"></div>
 
-                  {/* Batch image container */}
-                  <div className="relative p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                    {/* Floating decorative elements */}
-                    <div className="absolute -top-3 -right-3 w-16 h-16 bg-emerald-500/10 rounded-full blur-md"></div>
-                    <div className="absolute -bottom-3 -left-3 w-14 h-14 bg-teal-500/10 rounded-full blur-md"></div>
+                <div className="relative p-6 rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                  <div className="absolute -top-3 -right-3 w-16 h-16 bg-emerald-500/10 rounded-full blur-md"></div>
+                  <div className="absolute -bottom-3 -left-3 w-14 h-14 bg-teal-500/10 rounded-full blur-md"></div>
 
-                    {/* Batch image */}
-                    <div className="relative z-10 flex items-center justify-center">
-                      <div className="relative">
-                        <img
-                          src='/img/batch.png'
-                          alt="Security Batch"
-                          className="w-64 h-64 lg:w-72 lg:h-72 object-contain drop-shadow-2xl"
-                        />
-                        {/* Subtle shine effect */}
-                        <div className="absolute top-1/4 left-1/4 w-20 h-20 bg-white/5 rounded-full blur-md"></div>
-                      </div>
-                    </div>
+                  <div className="relative z-10 flex items-center justify-center">
+                    <img
+                      src='/img/batch.png'
+                      alt="Security Batch"
+                      className="w-64 h-64 lg:w-72 lg:h-72 object-contain drop-shadow-2xl"
+                    />
+                  </div>
 
-                    {/* Caption */}
-                    <div className="text-center mt-6">
-                      <h3 className="text-2xl font-bold text-emerald-100 mb-1">Trusted Security Partner</h3>
-
-                    </div>
+                  <div className="text-center mt-6">
+                    <h3 className="text-2xl font-bold text-emerald-100 mb-1">
+                      Trusted Security Partner
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -217,72 +207,61 @@ const CrowdAndTrafficc = () => {
 
             {/* Right Side - Content */}
             <div className="lg:pl-2 mt-8">
+
               {/* Title */}
               <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-4 leading-tight">
-                Security &
+                Security Guardforce:
                 <span className="bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent">
-                  Technology
+                  {" "}High-Vigilance Solutions
                 </span>
               </h1>
 
               {/* Subtitle */}
-              <div className="mb-8">
-                <p className="text-2xl text-emerald-200 mb-4 font-semibold">
-                  Unlocking Innovative Solutions
+              <div className="mb-6">
+                <p className="text-2xl text-emerald-200 mb-3 font-semibold">
+                  Intelligence-Led Security & Elite Guarding
+                </p>
+                <p className="text-lg text-emerald-100/90 font-medium mb-3">
+                  Protecting Assets, People, and Reputation through Integrated Risk Management.
                 </p>
                 <p className="text-lg text-emerald-100/90 leading-relaxed max-w-2xl">
-                  Enabling cities of the future with comprehensive security and traffic solutions.
-                  Our integrated approach combines cutting-edge technology with proven methodologies
-                  to deliver unmatched protection and efficiency.
+                  At FIH, we view security as the first line of defense in maintaining facility continuity.
+                  Our security model moves away from passive observation toward proactive threat mitigation.
+                  We deploy highly trained personnel supported by a robust digital command infrastructure.
                 </p>
               </div>
 
-              {/* Features Grid - Updated to match original spacing */}
-              <div className="space-y-6 mb-5">
-                {/* First row */}
-                <div className="flex flex-col sm:flex-row flex-wrap gap-2">
-                  {[
-                    { icon: <Shield className="w-5 h-5" />, text: "Event & Crowd Management" },
-                    { icon: <Users className="w-5 h-5" />, text: "Emergency Response Support" },
-                    { icon: <Car className="w-5 h-5" />, text: "Escort & Convoy Services" },
-                    { icon: <Shield className="w-5 h-5" />, text: "Controlled Route Access" },
-                  ].map((item, index) => (
-                    <div key={index} className="flex-1 min-w-[200px]">
-                      <div className="group flex items-center gap-3 p-2 rounded-xl hover:bg-emerald-900/30 transition-all duration-300">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-900/40 flex items-center justify-center group-hover:bg-emerald-800/50 transition-colors">
-                          <div className="text-emerald-300 group-hover:text-emerald-200">
-                            {item.icon}
-                          </div>
-                        </div>
-                        <span className="text-emerald-100 group-hover:text-white transition-colors">
-                          {item.text}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+              {/* Features */}
+              <div className="space-y-5">
 
-                {/* Second row */}
-                <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-                  {[
-                    { icon: <Users className="w-5 h-5" />, text: "Roving Security Responsive Support" },
-                    { icon: <Car className="w-5 h-5" />, text: "Traffic & Safety Monitoring" },
-                    { icon: <Car className="w-5 h-5" />, text: "Centralised 24-hr Facility Ops Centre" },
-                  ].map((item, index) => (
-                    <div key={index} className="flex-1 min-w-[200px]">
-                      <div className="group flex items-center gap-3 p-4 rounded-xl hover:bg-emerald-900/30 transition-all duration-300">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-full bg-emerald-900/40 flex items-center justify-center group-hover:bg-emerald-800/50 transition-colors">
-                          <div className="text-emerald-300 group-hover:text-emerald-200">
-                            {item.icon}
-                          </div>
-                        </div>
-                        <span className="text-emerald-100 group-hover:text-white transition-colors">
-                          {item.text}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                {[
+                  {
+                    title: "Elite Personnel Selection",
+                    desc: "Our officers undergo rigorous vetting and specialized training in conflict de-escalation, counter-terrorism awareness, and concierge-level service."
+                  },
+                  {
+                    title: "Integrated Command & Control",
+                    desc: "Centralized management enables real-time incident reporting, GPS-tracked patrols, and instant emergency escalation."
+                  },
+                  {
+                    title: "Healthcare-Specific Security",
+                    desc: "Specialized expertise in managing high-traffic healthcare environments and protecting vulnerable patient populations."
+                  },
+                  {
+                    title: "Infrastructure Audit & Consultancy",
+                    desc: "Comprehensive security audits to identify vulnerabilities in perimeter protection, access control, and surveillance systems."
+                  }
+                ].map((item, index) => (
+                  <div key={index} className="group p-4 rounded-xl hover:bg-emerald-900/30 transition-all duration-300">
+                    <h4 className="text-lg font-semibold text-emerald-200 group-hover:text-white mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-emerald-100/80 group-hover:text-emerald-50 text-sm leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+
               </div>
             </div>
           </div>
@@ -291,40 +270,78 @@ const CrowdAndTrafficc = () => {
 
       {/* About Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">TRAFFIC AND CROWD MANAGEMENT</h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Efficient traffic control road diversions, and vigilant supervision to safeguard the public from potential risks and hazards. Compliant with stringent safety standards at worksites, work convoys, and major event venues
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-gray-700">Critical infrastructure protection solutions</p>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-gray-700">Project funding, consulting and risk management</p>
-                </div>
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-                  <p className="text-gray-700">Cybersecurity asset management</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl p-8">
-              <div className="text-center">
-                <Target className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-                <p className="text-gray-700 italic">
-                  "Your Safety and Security is our Top Priority, for your Peace of Mind"
-                </p>
-              </div>
-            </div>
+  <div className="max-w-6xl mx-auto px-4">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+      {/* Left Content */}
+      <div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          Traffic & Crowd Management: Smart Mobility Control
+        </h2>
+
+        <p className="text-lg text-gray-600 mb-4 font-semibold">
+          Intelligent Flow Control & Public Safety Assurance
+        </p>
+
+        <p className="text-lg text-gray-600 mb-6">
+          At FIH, we deliver structured and responsive traffic and crowd management solutions
+          designed to ensure safety, efficiency, and seamless mobility across events,
+          infrastructure projects, and high-density environments. Our approach integrates
+          trained personnel with real-time monitoring systems to minimize risks and disruptions.
+        </p>
+
+        <div className="space-y-4">
+
+          <div className="flex items-start">
+            <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+            <p className="text-gray-700">
+              Event & Crowd Flow Optimization – Safe movement planning for large-scale events and public gatherings.
+            </p>
           </div>
+
+          <div className="flex items-start">
+            <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+            <p className="text-gray-700">
+              Traffic Diversion & Route Control – Efficient rerouting strategies to reduce congestion and hazards.
+            </p>
+          </div>
+
+          <div className="flex items-start">
+            <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+            <p className="text-gray-700">
+              Real-Time Monitoring & Incident Response – Rapid coordination for emergencies and dynamic situations.
+            </p>
+          </div>
+
+          <div className="flex items-start">
+            <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+            <p className="text-gray-700">
+              Worksite & Convoy Safety Management – Compliance-driven solutions for infrastructure and logistics operations.
+            </p>
+          </div>
+
         </div>
-      </section>
+      </div>
+
+      {/* Right Card */}
+      <div className="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl p-8">
+        <div className="text-center">
+          <Target className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
+
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">
+            Operational Excellence
+          </h3>
+
+          <p className="text-gray-700 italic">
+            "Delivering safe, efficient, and controlled environments through precision planning
+            and proactive management."
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
 
@@ -369,82 +386,82 @@ const CrowdAndTrafficc = () => {
 
 
       {/* Contact Section */}
-   <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
-  <div className="container mx-auto px-4">
-    {/* Logo Section - Centered */}
-    <div className="flex justify-center mb-12">
-      <div className="footer-logo-container">
-        <img
-          src="/img/logoGreen.png"
-          alt="FIH Logo"
-          className="h-24 md:h-28 w-auto transition-all duration-300 hover:scale-105"
-        />
-      </div>
-    </div>
-
-    {/* Contact Information Section */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-      
-      {/* QR Code Section */}
-      <div className="flex justify-center items-center">
-        <div className="bg-white p-4 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-          <img
-            src="/img/security/securityscanner.png"
-            alt="Security Scanner QR Code"
-            className="h-36 md:h-40 w-auto transition-all duration-300 hover:scale-105"
-          />
-        </div>
-      </div>
-
-      {/* Contact Details Section */}
-      <div className="flex flex-col justify-center space-y-6">
-        <div className="text-center md:text-left">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-green-500 inline-block">
-            Traffic & Security
-          </h3>
-        </div>
-
-        {/* Phone */}
-        <div className="flex flex-col space-y-2">
-          <div className="flex items-center justify-center md:justify-start space-x-3 group">
-            <div className="bg-blue-900 p-2 rounded-full  transition-colors">
-              <FaPhoneAlt className="text-white text-sm" />
-            </div>
-            <a href="tel:+6597957333" className="text-gray-700 hover:text-green-600 transition-colors text-lg">
-              +65 9795-7333
-            </a>
-          </div>
-        </div>
-
-        {/* Email */}
-        <div className="flex flex-col space-y-2">
-          <div className="flex items-center justify-center md:justify-start space-x-3 group">
-            <div className="bg-blue-900 p-2 rounded-full  transition-colors">
-              <CiGlobe className="text-white text-sm" />
-            </div>
-            <a href="mailto:security@fih.com.sg" className="text-gray-700 hover:text-green-600 transition-colors">
-              security@fih.com.sg
-            </a>
-          </div>
-        </div>
-
-        {/* Address */}
-        <div className="flex flex-col space-y-2">
-          <div className="flex items-start justify-center md:justify-start space-x-3 group">
-            <div className="bg-blue-900 p-2 rounded-full  transition-colors mt-1">
-              <CiGlobe className="text-white text-sm" />
-            </div>
-            <div className="text-gray-700 leading-relaxed">
-              9 Eunos Ave 8A,<br />
-              #02-00<br />
-              Singapore 409461
+      <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          {/* Logo Section - Centered */}
+          <div className="flex justify-center mb-12">
+            <div className="footer-logo-container">
+              <img
+                src="/img/logoGreen.png"
+                alt="FIH Logo"
+                className="h-24 md:h-28 w-auto transition-all duration-300 hover:scale-105"
+              />
             </div>
           </div>
+
+          {/* Contact Information Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+
+            {/* QR Code Section */}
+            <div className="flex justify-center items-center">
+              <div className="bg-white p-4 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <img
+                  src="/img/security/securityscanner.png"
+                  alt="Security Scanner QR Code"
+                  className="h-36 md:h-40 w-auto transition-all duration-300 hover:scale-105"
+                />
+              </div>
+            </div>
+
+            {/* Contact Details Section */}
+            <div className="flex flex-col justify-center space-y-6">
+              <div className="text-center md:text-left">
+                <h3 className="text-xl font-semibold text-gray-800 mb-4 pb-2 border-b-2 border-green-500 inline-block">
+                  Traffic & Security
+                </h3>
+              </div>
+
+              {/* Phone */}
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-center justify-center md:justify-start space-x-3 group">
+                  <div className="bg-blue-900 p-2 rounded-full  transition-colors">
+                    <FaPhoneAlt className="text-white text-sm" />
+                  </div>
+                  <a href="" className="text-gray-700 hover:text-green-600 transition-colors text-lg">
+                    +-- -- --
+                  </a>
+                </div>
+              </div>
+
+              {/* Email */}
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-center justify-center md:justify-start space-x-3 group">
+                  <div className="bg-blue-900 p-2 rounded-full  transition-colors">
+                    <CiGlobe className="text-white text-sm" />
+                  </div>
+                  <a href="mailto:security@fih.com.sg" className="text-gray-700 hover:text-green-600 transition-colors">
+                    security@fih.com.sg
+                  </a>
+                </div>
+              </div>
+
+              {/* Address */}
+              <div className="flex flex-col space-y-2">
+                <div className="flex items-start justify-center md:justify-start space-x-3 group">
+                  <div className="bg-blue-900 p-2 rounded-full  transition-colors mt-1">
+                    <CiGlobe className="text-white text-sm" />
+                  </div>
+                  <div className="text-gray-700 leading-relaxed">
+                    9 Eunos Ave 8A,<br />
+                    #02-00<br />
+                    Singapore 409461
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
     </div>
   );
 }

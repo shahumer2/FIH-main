@@ -8,7 +8,7 @@ function Services() {
   const services = [
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Security & Technology",
+      title: "Security Guardforce",
       description: "Comprehensive security solutions integrated with advanced technology for complete protection",
       image: "/img/security/sec.png",
       color: "blue",
@@ -25,7 +25,7 @@ function Services() {
     },
     {
       icon: <Sparkles className="w-8 h-8" />,
-      title: "Cleaning Services",
+      title: "Cleaning & Environmental Services",
       description: "Professional cleaning solutions for commercial, healthcare, and specialized facilities",
       image: "/img/cleaning/cleaning2.jpg",
       color: "green",

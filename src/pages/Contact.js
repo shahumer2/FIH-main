@@ -96,7 +96,7 @@ function Contact() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone Number</h3>
                     <div className="text-gray-700 space-y-1 mt-1">
-                      <div>(65) 9795-7333</div>
+                      <div>(65) ---------</div>
                     </div>
                   </div>
                 </div>
@@ -201,13 +201,12 @@ function Contact() {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white/90"
                   >
                     <option value="">Select a service</option>
-                    <option value="Cleaning">Cleaning </option>
-                    <option value="Landscaping">Landscaping</option>
-                    <option value="Pest Control">Pest Control
+                    <option value="Cleaning">Cleaning & Environmental Services </option>
+                    <option value="LandscapeManagement">Landscape Management</option>
+                    <option value="Pest Control">Integrated Pest Management
 </option>
-                    <option value="Traffic & Crowd Management">Traffic & Crowd Management
-</option>
-         <option value="Outrider & Escort">Outrider & Escort
+                   
+         <option value="SecurityGuardforce">Security Guardforce
 
 </option>
        

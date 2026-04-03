@@ -228,7 +228,7 @@ const CrowdAndTraffic = () => {
               {/* Subtitle */}
               <div className="mb-8">
                 <p className="text-2xl text-emerald-200 mb-4 font-semibold">
-                  Unlocking Innovative Solutions
+                  Clinical-Grade Hygiene & Environmental Stewardship
                 </p>
                 <p className="text-lg text-emerald-100/90 leading-relaxed max-w-2xl">
                   Enabling cities of the future with comprehensive security and traffic solutions.
@@ -1156,7 +1156,7 @@ const CrowdAndTraffic = () => {
 
           <div className="contact-item">
             <span className="contact-label">Traffic & Security</span>
-            <span className="contact-detail text-white mb-6" ><span class="log "><FaPhoneAlt /></span>+65 9795-7333  <br /></span>
+            <span className="contact-detail text-white mb-6" ><span class="log "><FaPhoneAlt /></span>+65 --------  <br /></span>
 
             <span className="contact-email text-white mb-3" ><span class="log "><CiGlobe /></span>security@fih.com.sg</span>
             <span className="contact-email text-white " > <span class="log "><CiGlobe /> </span>  9 Eunos Ave 8A,<br />
