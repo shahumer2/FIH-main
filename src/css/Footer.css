@@ -254,3 +254,16 @@
 .animate-fadeInDown {
   animation: fadeInDown 0.2s ease-out;
 }
+
+@keyframes vibrate {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-1.5px); }
+  100% { transform: translateX(1.5px); }
+}
+
+.animate-vibrate {
+  animation: vibrate 0.2s ease-in-out;
+  animation-iteration-count: 3;
+}

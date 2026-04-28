@@ -11,6 +11,19 @@ function Home() {
   const [currentVideoSlide, setCurrentVideoSlide] = useState(0);
   const videoRefs = useRef([]);
 
+  const [isVibrating, setIsVibrating] = useState(false);
+
+  useEffect(() => {
+    // Trigger vibration every 3 seconds
+    const interval = setInterval(() => {
+      setIsVibrating(true);
+      // Stop vibrating after 0.3 seconds
+      setTimeout(() => setIsVibrating(false), 300);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Initialize video refs
   useEffect(() => {
     videoRefs.current = [React.createRef(), React.createRef()];
@@ -222,7 +235,7 @@ function Home() {
 
     const slideTimer = setInterval(() => {
       setServicesCurrentSlide((prev) => (prev + 1) % services.length);
-    }, 5000);
+    }, 5000*4);
 
     return () => clearInterval(slideTimer);
   }, [isServicesAutoPlaying, services.length]);
@@ -369,9 +382,14 @@ function Home() {
           {/* Tagline with decorative elements */}
           <div className="relative mb-12">
             <div className="absolute left-1/2 -translate-x-1/2 top-1/2 w-24 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
-            <p className="text-xl md:text-3xl font-light tracking-wide relative inline-block px-8">
+
+            <p
+              className={`text-xl md:text-3xl font-light tracking-wide relative inline-block px-8 transition-transform duration-100 ${isVibrating ? 'animate-vibrate' : ''
+                }`}
+            >
               “Seamless Secure Sustainable”
             </p>
+
             <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-24 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
           </div>
 
@@ -387,13 +405,13 @@ function Home() {
           <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16">
             <Link
               to="/services"
-              className="group relative bg-gradient-to-r from-white to-blue-50 text-blue-700 hover:from-blue-600 hover:to-blue-700 hover:text-white px-10 py-5 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-xl hover:shadow-2xl overflow-hidden"
+              className="group relative bg-gradient-to-r from-white to-green-50 text-green-700 hover:from-green-300 hover:to-green-800 hover:text-white px-10 py-5 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-xl hover:shadow-2xl overflow-hidden"
             >
               <span className="relative z-10 flex items-center">
                 Our Services
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
 
             <a
@@ -402,7 +420,7 @@ function Home() {
             >
               <span className="relative z-10 flex items-center">
                 <FaWhatsapp className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                (65)------
+                +65 8952-0327
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </a>
@@ -433,11 +451,11 @@ function Home() {
         <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-         <div className="relative h-[660px] flex items-start justify-center rounded-2xl shadow-2xl overflow-hidden">
+          <div className="relative h-[660px] flex items-start justify-center rounded-2xl shadow-2xl overflow-hidden">
             <img
               src="/img/fihleft.png"
               alt="About FIH"
-             className="rounded-2xl shadow-2xl w-full h-full object-contain object-top"
+              className="rounded-2xl shadow-2xl w-full h-full object-contain object-top"
             />
             <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-blue-600 to-teal-400 opacity-40 blur-lg -z-10"></div>
           </div>
@@ -455,8 +473,8 @@ function Home() {
             <p className="text-blue-100 leading-relaxed text-justify mb-5">
               Focus Integrated Healthcare (FIH) redefines the built environment through a
               unified and intelligent service model. We simplify complex facility
-              requirements—ranging from medical-grade hygiene to high-vigilance
-              security—by bringing everything together under a single, data-driven
+              requirements ranging from medical grade hygiene to high-vigilance
+              security by bringing everything together under a single, data-driven
               management platform.
             </p>
 
@@ -498,30 +516,85 @@ function Home() {
             {/* Content Section */}
             <div className="lg:h-full lg:w-full">
               <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 md:p-8 h-full">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">INTEGRATED FACILITY MANAGEMENT</h3>
-                <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">INTEGRATED FACILITY MANAGEMENT</h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                  {/* Landscape */}
                   <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-2">Security Guardforce</h4>
-                    <p className="text-gray-600 text-sm">Clinical-Grade Hygiene & Environmental Stewardship</p>
+                    <h4 className="font-semibold text-gray-900 mb-3">🌿 Landscape Management</h4>
+                    <ul className="space-y-1 text-sm text-gray-600">
+                      <li>• Landscape Planting & Maintenance</li>
+                      <li>• Arboriculture & Landscape Consultancy</li>
+                      <li>• Plant Supply, Rental and Vertical Gardens</li>
+                      <li>• Irrigation System Installation & Soil Management</li>
+                      <li>• Pond Maintenance & Water Features</li>
+                    </ul>
                   </div>
 
+                  {/* Cleaning */}
                   <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-2">Cleaning</h4>
-                    <p className="text-gray-600 text-sm">Relieving the Burden of Upkeeping & Maintenance</p>
+                    <h4 className="font-semibold text-gray-900 mb-3">🧹 Cleaning Services</h4>
+                    <ul className="space-y-1 text-sm text-gray-600">
+                      <li>• Commercial & Healthcare Facilities Cleaning</li>
+                      <li>• External Facade & At-Height Cleaning & Restoration</li>
+                    </ul>
                   </div>
 
+                  {/* FIH */}
                   <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-2">Integrated Pest Management (IPM)</h4>
-                    <p className="text-gray-600 text-sm">Proactive Bio-Security & Vector Control</p>
+                    <h4 className="font-semibold text-gray-900 mb-3">✨ FIH</h4>
+                    <ul className="space-y-1 text-sm text-gray-600">
+                      <li>• Customised Cleaning Services</li>
+                      <li>• Specialised Cleaning Services (e.g. Upholstery & Carpet)</li>
+                    </ul>
                   </div>
 
+                  {/* Pest Control */}
                   <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-2">Landscape Management</h4>
-                    <p className="text-gray-600 text-sm">Sustainable Urban Landscapes & Horticultural Excellence</p>
+                    <h4 className="font-semibold text-gray-900 mb-3">🐜 Pest Control</h4>
+                    <ul className="space-y-1 text-sm text-gray-600">
+                      <li>• General Pest Control Services</li>
+                      <li>• Integrated Termite Control Inspection / Treatment</li>
+                      <li>• Fumigation Services: ISPM 15, PH3, BMSB</li>
+                      <li>• Commodities / Vessel Fumigation</li>
+                      <li>• Larvicide & Fogging Services</li>
+                      <li>• Bird Control Measures</li>
+                    </ul>
                   </div>
+
+                  {/* Security */}
+                  <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                    <h4 className="font-semibold text-gray-900 mb-3">🛡️ Security & Crowd Control</h4>
+                    <ul className="space-y-1 text-sm text-gray-600">
+                      <li>• Security Guardforce Provision</li>
+                      <li>• Access Control Management</li>
+                      <li>• Risk Mitigation & Threat Prevention</li>
+                      <li>• Safety Assurance & Best Practices</li>
+                      <li>• Rapid Incident Response</li>
+                      <li>• Trained Licensed Security Officers</li>
+                    </ul>
+                  </div>
+
+                  {/* Traffic */}
+                  <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                    <h4 className="font-semibold text-gray-900 mb-3">🚦 Traffic & Event Management</h4>
+                    <ul className="space-y-1 text-sm text-gray-600">
+                      <li>• Traffic Flow Control</li>
+                      <li>• Crowd Movement Management</li>
+                      <li>• Escort & Outriders Services</li>
+                      <li>• Event Traffic Planning</li>
+                      <li>• Safety & Compliance & Best Practices</li>
+                      <li>• Trained & Certified Personnel</li>
+                    </ul>
+                  </div>
+
                 </div>
               </div>
             </div>
+
+
+
           </div>
         </div>
       </section>

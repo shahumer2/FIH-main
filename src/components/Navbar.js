@@ -125,7 +125,7 @@ function Navbar() {
                     : 'bg-white text-green-600 hover:bg-blue-50'
                   }`}
               >
-                Call: +--------
+                Call: +65 8952-0327
               </a>
             </div>
 
