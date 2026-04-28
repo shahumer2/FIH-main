@@ -105,7 +105,7 @@ function Contact() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
                     <div className="text-gray-700 space-y-1 mt-1">
-                      <div>info@fih.com.sg</div>
+                      <div>sales@fih.com.sg</div>
                    
                       <div>security@fih.com.sg</div>
                     </div>
