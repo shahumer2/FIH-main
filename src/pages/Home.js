@@ -25,82 +25,95 @@ function Home() {
   }, []);
 
   // Initialize video refs
+  // Initialize video refs
   useEffect(() => {
-    videoRefs.current = [React.createRef(), React.createRef()];
+    videoRefs.current = [null, null];
   }, []);
+
+  // Play video only when scrolled into view, pause when out
+  useEffect(() => {
+    const videoSection = document.getElementById('video-section');
+    if (!videoSection || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = videoRefs.current[currentVideoSlide];
+
+          if (entry.isIntersecting && video) {
+            // Section is in view — play current video
+            video.play().catch((e) => {
+              console.log("Autoplay prevented (expected)");
+            });
+          } else if (video) {
+            // Section is out of view — pause current video
+            if (!video.paused) {
+              video.pause();
+            }
+          }
+        });
+      },
+      {
+        threshold: 0.3, // 30% of section must be visible
+        rootMargin: '0px'
+      }
+    );
+
+    observer.observe(videoSection);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [currentVideoSlide]); // Re-run when slide changes
 
   // Handle slide change
   const handleVideoNext = () => {
-    // Pause current video
-    if (videoRefs.current[currentVideoSlide]?.current) {
-      videoRefs.current[currentVideoSlide].current.pause();
+    // Pause AND reset current video
+    if (videoRefs.current[currentVideoSlide]) {
+      videoRefs.current[currentVideoSlide].pause();
+      videoRefs.current[currentVideoSlide].currentTime = 0; // Reset to start
     }
 
     const nextSlide = currentVideoSlide === 1 ? 0 : currentVideoSlide + 1;
     setCurrentVideoSlide(nextSlide);
-
-    // Play next video after slide transition
-    setTimeout(() => {
-      if (videoRefs.current[nextSlide]?.current) {
-        videoRefs.current[nextSlide].current.play().catch(e => {
-          console.log("Auto-play prevented, user interaction required");
-        });
-      }
-    }, 300);
   };
 
   const handleVideoPrev = () => {
-    // Pause current video
-    if (videoRefs.current[currentVideoSlide]?.current) {
-      videoRefs.current[currentVideoSlide].current.pause();
+    // Pause AND reset current video
+    if (videoRefs.current[currentVideoSlide]) {
+      videoRefs.current[currentVideoSlide].pause();
+      videoRefs.current[currentVideoSlide].currentTime = 0; // Reset to start
     }
 
     const prevSlide = currentVideoSlide === 0 ? 1 : currentVideoSlide - 1;
     setCurrentVideoSlide(prevSlide);
-
-    // Play previous video after slide transition
-    setTimeout(() => {
-      if (videoRefs.current[prevSlide]?.current) {
-        videoRefs.current[prevSlide].current.play().catch(e => {
-          console.log("Auto-play prevented, user interaction required");
-        });
-      }
-    }, 300);
   };
 
   const goToVideoSlide = (index) => {
     // Don't do anything if clicking current slide
     if (index === currentVideoSlide) return;
 
-    // Pause current video
-    if (videoRefs.current[currentVideoSlide]?.current) {
-      videoRefs.current[currentVideoSlide].current.pause();
+    // Pause AND reset current video
+    if (videoRefs.current[currentVideoSlide]) {
+      videoRefs.current[currentVideoSlide].pause();
+      videoRefs.current[currentVideoSlide].currentTime = 0; // Reset to start
     }
 
     setCurrentVideoSlide(index);
-
-    // Play new slide video
-    setTimeout(() => {
-      if (videoRefs.current[index]?.current) {
-        videoRefs.current[index].current.play().catch(e => {
-          console.log("Auto-play prevented");
-        });
-      }
-    }, 300);
   };
 
   // Auto-play first video on mount (only once)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (videoRefs.current[0]?.current) {
-        videoRefs.current[0].current.play().catch(e => {
-          console.log("Initial auto-play prevented - user needs to interact first");
-        });
-      }
-    }, 1000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     if (videoRefs.current[0]?.current) {
+  //       videoRefs.current[0].current.play().catch(e => {
+  //         console.log("Initial auto-play prevented - user needs to interact first");
+  //       });
+  //     }
+  //   }, 1000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
 
   const [servicesCurrentSlide, setServicesCurrentSlide] = useState(0);
@@ -143,7 +156,7 @@ function Home() {
       title: "Security Guardforce",
       description: "Protecting Assets, People, and Reputation through Integrated Risk Management.",
       image: "/img/security/sec1.png",
-      link: "/services/security-crowd-traffic-management"
+      link: "/services/security-crowd-control"
     },
     {
       title: "Cleaning & Environmental Services",
@@ -235,7 +248,7 @@ function Home() {
 
     const slideTimer = setInterval(() => {
       setServicesCurrentSlide((prev) => (prev + 1) % services.length);
-    }, 5000*4);
+    }, 5000 * 4);
 
     return () => clearInterval(slideTimer);
   }, [isServicesAutoPlaying, services.length]);
@@ -369,7 +382,10 @@ function Home() {
         <div
           className="absolute inset-0 bg-center bg-no-repeat z-0"
           style={{
-            backgroundColor: '#204b29'
+            backgroundImage: "url('/img/sec/5.png')",  // ← Replace with your actual photo file
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+
           }}
         />
         <div className="absolute inset-0 bg-black/40 z-0" />
@@ -384,8 +400,9 @@ function Home() {
             <div className="absolute left-1/2 -translate-x-1/2 top-1/2 w-24 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
 
             <p
-              className={`text-xl md:text-3xl font-light tracking-wide relative inline-block px-8 transition-transform duration-100 ${isVibrating ? 'animate-vibrate' : ''
+              className={`text-sm md:text-3xl font-light tracking-wide relative inline-block px-8 transition-transform duration-100 ${isVibrating ? 'animate-vibrate' : ''
                 }`}
+              style={{ textShadow: '0 0 5px rgba(255, 255, 255, 0.7)', fontSize: '2.5rem' }}
             >
               “Seamless Secure Sustainable”
             </p>
@@ -402,24 +419,26 @@ function Home() {
           </div> */}
 
           {/* CTA Buttons with enhanced styling */}
-          <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16">
+          <div className="flex flex-col items-center sm:flex-row gap-4 justify-center mb-16">
+            {/* Our Services Button */}
             <Link
               to="/services"
-              className="group relative bg-gradient-to-r from-white to-green-50 text-green-700 hover:from-green-300 hover:to-green-800 hover:text-white px-10 py-5 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-xl hover:shadow-2xl overflow-hidden"
+              className="group relative w-fit bg-gradient-to-r from-white to-green-50 text-green-700 hover:from-green-300 hover:to-green-800 hover:text-white px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl overflow-hidden"
             >
-              <span className="relative z-10 flex items-center">
+              <span className="relative z-10 flex items-center whitespace-nowrap">
                 Our Services
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </Link>
 
+            {/* WhatsApp Button */}
             <a
               href="tel:+6597407333"
-              className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-10 py-5 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-xl hover:shadow-2xl overflow-hidden"
+              className="group relative w-fit bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center shadow-lg hover:shadow-xl overflow-hidden"
             >
-              <span className="relative z-10 flex items-center">
-                <FaWhatsapp className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+              <span className="relative z-10 flex items-center whitespace-nowrap">
+                <FaWhatsapp className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                 +65 8952-0327
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -515,78 +534,224 @@ function Home() {
 
             {/* Content Section */}
             <div className="lg:h-full lg:w-full">
-              <div className="bg-white rounded-2xl shadow-lg p-6 mb-8 md:p-8 h-full">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">INTEGRATED FACILITY MANAGEMENT</h3>
+              <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl p-6 md:p-10 h-full border border-gray-100">
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {/* Section Header */}
+                <div className="text-center mb-10">
+                  <span className="inline-block px-4 py-1.5 bg-green-50 text-green-700 text-xs font-semibold tracking-wider uppercase rounded-full mb-4">
+                    What We Offer
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
+                    Integrated Facility Management
+                  </h3>
+                  <div className="w-20 h-1 bg-gradient-to-r from-green-500 to-emerald-400 rounded-full mx-auto mt-4"></div>
+                </div>
+
+                {/* Service Cards Grid */}
+                {/* Service Cards Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
                   {/* Landscape */}
-                  <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-3">🌿 Landscape Management</h4>
-                    <ul className="space-y-1 text-sm text-gray-600">
-                      <li>• Landscape Planting & Maintenance</li>
-                      <li>• Arboriculture & Landscape Consultancy</li>
-                      <li>• Plant Supply, Rental and Vertical Gardens</li>
-                      <li>• Irrigation System Installation & Soil Management</li>
-                      <li>• Pond Maintenance & Water Features</li>
-                    </ul>
+                  <div className="group bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-100/50 hover:border-green-300 hover:shadow-lg hover:shadow-green-100/50 transition-all duration-300 flex flex-col">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center text-lg shadow-md">
+                          🌿
+                        </span>
+                        <h4 className="font-bold text-gray-800 text-sm md:text-base">Landscape Management</h4>
+                      </div>
+                      <ul className="space-y-2 mb-4">
+                        {[
+                          "Landscape Planting & Maintenance",
+                          "Irrigation System & Soil Management",
+                          // "Arboriculture & Landscape Consultancy",
+                          // "Plant Supply, Rental & Vertical Gardens",
+                          // "Pond Maintenance & Water Features"
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-gray-600">
+                            <span className="text-green-500 mt-0.5 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Explore More Button */}
+                    <Link
+                      to="/services/landscaping"
+                      className="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold text-green-700 bg-white/60 hover:bg-green-500 hover:text-white rounded-xl border border-green-200 hover:border-green-500 transition-all duration-300 group/btn"
+                    >
+                      Explore More
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
 
                   {/* Cleaning */}
-                  <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-3">🧹 Cleaning Services</h4>
-                    <ul className="space-y-1 text-sm text-gray-600">
-                      <li>• Commercial & Healthcare Facilities Cleaning</li>
-                      <li>• External Facade & At-Height Cleaning & Restoration</li>
-                    </ul>
+                  <div className="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-100/50 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100/50 transition-all duration-300 flex flex-col">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-xl flex items-center justify-center text-lg shadow-md">
+                          🧹
+                        </span>
+                        <h4 className="font-bold text-gray-800 text-sm md:text-base">Cleaning Services</h4>
+                      </div>
+                      <ul className="space-y-2 mb-4">
+                        {[
+                          "Commercial & Healthcare Facilities Cleaning",
+                          "External Facade & At-Height Cleaning & Restoration"
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-gray-600">
+                            <span className="text-blue-500 mt-0.5 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Explore More Button */}
+                    <Link
+                      to="/services/cleaning"
+                      className="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold text-blue-700 bg-white/60 hover:bg-blue-500 hover:text-white rounded-xl border border-blue-200 hover:border-blue-500 transition-all duration-300 group/btn"
+                    >
+                      Explore More
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
 
-                  {/* FIH */}
-                  <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-3">✨ FIH</h4>
-                    <ul className="space-y-1 text-sm text-gray-600">
-                      <li>• Customised Cleaning Services</li>
-                      <li>• Specialised Cleaning Services (e.g. Upholstery & Carpet)</li>
-                    </ul>
-                  </div>
+                 
 
                   {/* Pest Control */}
-                  <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-3">🐜 Pest Control</h4>
-                    <ul className="space-y-1 text-sm text-gray-600">
-                      <li>• General Pest Control Services</li>
-                      <li>• Integrated Termite Control Inspection / Treatment</li>
-                      <li>• Fumigation Services: ISPM 15, PH3, BMSB</li>
-                      <li>• Commodities / Vessel Fumigation</li>
-                      <li>• Larvicide & Fogging Services</li>
-                      <li>• Bird Control Measures</li>
-                    </ul>
+                  <div className="group bg-gradient-to-br from-amber-50 to-yellow-50 rounded-2xl p-6 border border-amber-100/50 hover:border-amber-300 hover:shadow-lg hover:shadow-amber-100/50 transition-all duration-300 flex flex-col">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-xl flex items-center justify-center text-lg shadow-md">
+                          🐜
+                        </span>
+                        <h4 className="font-bold text-gray-800 text-sm md:text-base">Pest Control</h4>
+                      </div>
+                      <ul className="space-y-2 mb-4">
+                        {[
+                          "General Pest Control Services",
+                          "Integrated Termite Control & Treatment",
+                          // "Fumigation: ISPM 15, PH3, BMSB",
+                          // "Commodities / Vessel Fumigation",
+                          // "Larvicide & Fogging Services",
+                          // "Bird Control Measures"
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-gray-600">
+                            <span className="text-amber-500 mt-0.5 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Explore More Button */}
+                    <Link
+                      to="/services/pest-control"
+                      className="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold text-amber-700 bg-white/60 hover:bg-amber-500 hover:text-white rounded-xl border border-amber-200 hover:border-amber-500 transition-all duration-300 group/btn"
+                    >
+                      Explore More
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
 
                   {/* Security */}
-                  <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-3">🛡️ Security & Crowd Control</h4>
-                    <ul className="space-y-1 text-sm text-gray-600">
-                      <li>• Security Guardforce Provision</li>
-                      <li>• Access Control Management</li>
-                      <li>• Risk Mitigation & Threat Prevention</li>
-                      <li>• Safety Assurance & Best Practices</li>
-                      <li>• Rapid Incident Response</li>
-                      <li>• Trained Licensed Security Officers</li>
-                    </ul>
+                  <div className="group bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-6 border border-red-100/50 hover:border-red-300 hover:shadow-lg hover:shadow-red-100/50 transition-all duration-300 flex flex-col">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-red-400 to-orange-500 rounded-xl flex items-center justify-center text-lg shadow-md">
+                          🛡️
+                        </span>
+                        <h4 className="font-bold text-gray-800 text-sm md:text-base">Security & Crowd Control</h4>
+                      </div>
+                      <ul className="space-y-2 mb-4">
+                        {[
+                          "Security Guardforce Provision",
+                          "Access Control Management",
+                          // "Risk Mitigation & Threat Prevention",
+                          // "Safety Assurance & Best Practices",
+                          // "Rapid Incident Response",
+                          // "Trained Licensed Security Officers"
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-gray-600">
+                            <span className="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Explore More Button */}
+                    <Link
+                      to="/services/security-crowd-control"
+                      className="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold text-red-700 bg-white/60 hover:bg-red-500 hover:text-white rounded-xl border border-red-200 hover:border-red-500 transition-all duration-300 group/btn"
+                    >
+                      Explore More
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
 
                   {/* Traffic */}
-                  <div className="border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
-                    <h4 className="font-semibold text-gray-900 mb-3">🚦 Traffic & Event Management</h4>
-                    <ul className="space-y-1 text-sm text-gray-600">
-                      <li>• Traffic Flow Control</li>
-                      <li>• Crowd Movement Management</li>
-                      <li>• Escort & Outriders Services</li>
-                      <li>• Event Traffic Planning</li>
-                      <li>• Safety & Compliance & Best Practices</li>
-                      <li>• Trained & Certified Personnel</li>
-                    </ul>
+                  <div className="group bg-gradient-to-br from-indigo-50 to-blue-50 rounded-2xl p-6 border border-indigo-100/50 hover:border-indigo-300 hover:shadow-lg hover:shadow-indigo-100/50 transition-all duration-300 flex flex-col">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-indigo-400 to-blue-500 rounded-xl flex items-center justify-center text-lg shadow-md">
+                          🚦
+                        </span>
+                        <h4 className="font-bold text-gray-800 text-sm md:text-base">Traffic & Event Management</h4>
+                      </div>
+                      <ul className="space-y-2 mb-4">
+                        {[
+                          "Traffic Flow Control",
+                          "Crowd Movement Management",
+                          // "Escort & Outriders Services",
+                          // "Event Traffic Planning",
+                          // "Safety & Compliance & Best Practices",
+                          // "Trained & Certified Personnel"
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-gray-600">
+                            <span className="text-indigo-500 mt-0.5 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Explore More Button */}
+                    <Link
+                      to="/services/traffic"
+                      className="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold text-indigo-700 bg-white/60 hover:bg-indigo-500 hover:text-white rounded-xl border border-indigo-200 hover:border-indigo-500 transition-all duration-300 group/btn"
+                    >
+                      Explore More
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+
+                   {/* FIH - Special Styling */}
+                  <div className="group bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 border border-purple-100/50 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-100/50 transition-all duration-300 flex flex-col">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-4">
+                        <span className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl flex items-center justify-center text-lg shadow-md">
+                          ✨
+                        </span>
+                        <h4 className="font-bold text-gray-800 text-sm md:text-base">FIH Specialised</h4>
+                      </div>
+                      <ul className="space-y-2 mb-4">
+                        {[
+                          "Customised Cleaning Services",
+                          "Specialised Cleaning (Upholstery & Carpet)"
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-2 text-xs md:text-sm text-gray-600">
+                            <span className="text-purple-500 mt-0.5 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {/* Explore More Button */}
+                    {/* <Link
+                      to="/services/cleaning"
+                      className="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold text-purple-700 bg-white/60 hover:bg-purple-500 hover:text-white rounded-xl border border-purple-200 hover:border-purple-500 transition-all duration-300 group/btn"
+                    >
+                      Explore More
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                    </Link> */}
                   </div>
 
                 </div>
@@ -599,48 +764,77 @@ function Home() {
         </div>
       </section>
 
-      <section
-        className="relative py-20 bg-gray-900 text-white overflow-hidden"
-        style={{
-          backgroundImage: "url('/img/value-bg.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm z-0"></div>
+      <section className="relative py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white overflow-hidden">
+        {/* Animated background elements */}
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="relative order-2 lg:order-1">
-            <img
-              src="/img/valuedprop.png"
-              alt="Our Value Proposition"
-              className="rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-teal-400 to-blue-600 opacity-40 blur-lg -z-10"></div>
+
+        {/* Subtle grid pattern */}
+
+
+        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12">
+          {/* Decorative top line */}
+          <div className="flex justify-center mb-8">
+            <div className="w-20 h-1 bg-gradient-to-r from-teal-400 to-blue-500 rounded-full"></div>
           </div>
 
-          <div className="order-1 lg:order-2 bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-white/20">
-            <h3 className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-snug">
-              Our Value Proposition
+          {/* Main content card */}
+          <div className="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl border border-white/20 p-8 lg:p-12 hover:shadow-3xl transition-all duration-500 hover:scale-[1.02]">
+            {/* Quote icon */}
+            <div className="flex justify-center mb-6">
+              <svg className="w-12 h-12 text-teal-400 opacity-60" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
+            </div>
+
+            <h3 className="text-2xl lg:text-3xl font-bold text-center text-white mb-8 leading-tight bg-gradient-to-r from-white to-teal-200 bg-clip-text text-transparent">
+              Our Commitment to Excellence
             </h3>
 
-            <p className="text-blue-100 leading-relaxed text-justify mb-6">
-              "We believe facilities are more than spaces — they are environments that
-              safeguard people, enable productivity, and inspire trust. By integrating
-              technology, expertise, and a people-first approach, we deliver solutions
-              that go beyond maintenance to create long-term value for our
-              stakeholders."
-            </p>
-
-            <p className="text-blue-100 text-justify mb-6">
-              Our commitment is simple: to be a partner in resilience, innovation, and
-              excellence.
-            </p>
-
-            <div className="mt-8">
-              <p className="text-xl font-semibold text-blue-300">
-                — Dr. Matthew Yap, COO
+            {/* Main quote with elegant styling */}
+            <div className="relative mb-8">
+              <div className="absolute -top-4 -left-2 text-6xl text-teal-400/20 font-serif">"</div>
+              <p className="text-gray-200 leading-relaxed text-justify text-lg px-4 italic">
+                We believe facilities are more than spaces — they are environments that
+                safeguard people, enable productivity, and inspire trust. By integrating
+                technology, expertise, and a people-first approach, we deliver solutions
+                that go beyond maintenance to create long-term value for our stakeholders.
               </p>
+              <div className="absolute -bottom-6 -right-2 text-6xl text-teal-400/20 font-serif">"</div>
+            </div>
+
+            {/* Separator */}
+            <div className="flex justify-center my-8">
+              <div className="flex space-x-2">
+                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-teal-400 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* Second paragraph with subtle border */}
+            <div className="border-l-4 border-teal-400 pl-6 mb-8">
+              <p className="text-blue-100 leading-relaxed text-justify text-base">
+                Our commitment is simple: to be a partner in resilience, innovation, and excellence.
+              </p>
+            </div>
+
+            {/* Signature section */}
+            <div className="mt-10 pt-6 border-t border-white/10">
+              <div className="flex flex-col items-end">
+                <div className="text-right">
+                  <p className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-blue-300">
+                    — Dr. Matthew Yap, COO
+                  </p>
+                  <div className="h-px w-32 bg-gradient-to-r from-teal-400 to-transparent mt-2 ml-auto"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Decorative bottom icon */}
+            <div className="flex justify-center mt-8">
+              <svg className="w-6 h-6 text-white/20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
+              </svg>
             </div>
           </div>
         </div>
@@ -747,7 +941,7 @@ function Home() {
 
 
 
-      <section className="py-16 bg-gradient-to-br from-gray-900 to-slate-800">
+      <section id="video-section" className="py-16 bg-gradient-to-br from-gray-900 to-slate-800">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">Our Videos</h2>
@@ -773,11 +967,19 @@ function Home() {
 
                   <div className="bg-black rounded-xl overflow-hidden shadow-2xl">
                     <video
-                      ref={videoRefs.current[0]}
+                      ref={(el) => (videoRefs.current[0] = el)}
                       controls
+                      preload="metadata"
                       className="w-full h-auto max-h-[500px]"
-                      onPlay={() => setCurrentVideoSlide(0)}
-                      onPause={() => { }}
+                      onPlay={() => {
+                        setCurrentVideoSlide(0);
+                        // Pause the other video if it's playing
+                        if (videoRefs.current[1]) {
+                          videoRefs.current[1].pause();
+                          videoRefs.current[1].currentTime = 0;
+                        }
+                      }}
+                      playsInline
                     >
                       <source src="/videos/fih1.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
@@ -802,11 +1004,19 @@ function Home() {
 
                   <div className="bg-black rounded-xl overflow-hidden shadow-2xl">
                     <video
-                      ref={videoRefs.current[1]}
+                      ref={(el) => (videoRefs.current[1] = el)}
                       controls
+                      preload="metadata"
                       className="w-full h-auto max-h-[500px]"
-                      onPlay={() => setCurrentVideoSlide(1)}
-                      onPause={() => { }}
+                      onPlay={() => {
+                        setCurrentVideoSlide(1);
+                        // Pause the other video if it's playing
+                        if (videoRefs.current[0]) {
+                          videoRefs.current[0].pause();
+                          videoRefs.current[0].currentTime = 0;
+                        }
+                      }}
+                      playsInline
                     >
                       <source src="/videos/fih2.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
@@ -856,11 +1066,11 @@ function Home() {
           </div>
 
           {/* Auto-play Notice */}
-          <div className="mt-6 p-4 bg-blue-900/20 rounded-lg">
+          {/* <div className="mt-6 p-4 bg-blue-900/20 rounded-lg">
             <p className="text-blue-300 text-sm text-center">
               <span className="font-semibold">Note:</span> First video auto-plays. Browser may require one click to enable sound.
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
 

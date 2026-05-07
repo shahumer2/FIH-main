@@ -9,6 +9,10 @@
   box-sizing: border-box;
   overflow: hidden;
 }
+
+p{
+  font-size: 17px ;
+}
 .footer-top {
   position: relative;
   color: white;
@@ -266,4 +270,20 @@
 .animate-vibrate {
   animation: vibrate 0.2s ease-in-out;
   animation-iteration-count: 3;
+}
+
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.2s ease-out;
 }

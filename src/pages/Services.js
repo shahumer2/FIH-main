@@ -10,7 +10,7 @@ function Services() {
       icon: <Shield className="w-8 h-8" />,
       title: "Security Guardforce",
       description: "Comprehensive security solutions integrated with advanced technology for complete protection",
-      image: "/img/security/sec.png",
+      image: "/img/sec/2.png",
       color: "blue",
       features: [
         "Event & Crowd Management",
@@ -21,13 +21,13 @@ function Services() {
         "Traffic & Safety Monitoring",
         "Centralised 24-hr Facility Ops Centre"
       ],
-      url: "/services/security-crowd-traffic-management"
+      url: "/services/security-crowd-control"
     },
     {
       icon: <Sparkles className="w-8 h-8" />,
       title: "Cleaning & Environmental Services",
       description: "Professional cleaning solutions for commercial, healthcare, and specialized facilities",
-      image: "/img/cleaning/cleaning2.jpg",
+      image: "/img/clean/5.png",
       color: "green",
       features: [
         "Commercial & Healthcare Facilities Cleaning",
@@ -41,7 +41,7 @@ function Services() {
       icon: <Bug className="w-8 h-8" />,
       title: "Pest Control & Fumigation",
       description: "Complete pest management and fumigation services for all types of facilities",
-      image: "/img/pest/pest.png",
+      image: "/img/pes/1.png",
       color: "orange",
       features: [
         "General Pest Control Services",
@@ -57,7 +57,7 @@ function Services() {
       icon: <Trees className="w-8 h-8" />,
       title: "Landscaping & Gardening",
       description: "Professional landscaping and gardening services to enhance your outdoor spaces",
-      image: "/img/garden/garden2.jpg",
+      image: "/img/land/1.png",
       color: "emerald",
       features: [
         "Landscape Planting & Maintenance",

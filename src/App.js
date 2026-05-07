@@ -9,6 +9,8 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import SalesMarketingPage from './pages/SalesMarketing';
+
+import Trafficc from './pages/Sales/Trafficc';
 import CrowdAndTrafficc from './pages/Sales/CrowdAndTrafficc';
 import AviationSpecialist from './pages/Sales/AviationSpecialist';
 import CriticalInfrastructure from './pages/Sales/CriticalInfrastructure';
@@ -30,7 +32,8 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/salesmarketing" element={<SalesMarketingPage />} />
-        <Route path="/services/security-crowd-traffic-management" element={<CrowdAndTrafficc />} />
+        <Route path="/services/security-crowd-control" element={<CrowdAndTrafficc />} />
+        <Route path="/services/traffic" element={<Trafficc />} />
         <Route path="/services/cleaning" element={<Cleaning />} />
         <Route path="/services/pest-control" element={<PestControl />} />
         <Route path="/services/landscaping" element={<Landscaping />} />

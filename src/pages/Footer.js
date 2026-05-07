@@ -62,9 +62,10 @@ const Footer = () => {
             </div>
 
             {/* Right Contact - Traffic & Security */}
-            <div className=" ml-4 contact-item flex-1 min-w-[35%] lg:min-w-0 text-center lg:text-right">
-              <span className="contact-label block lg:text-lg text-xs ml-[-5px] font-semibold text-white mb-4 tracking-wider whitespace-nowrap">
-                Traffic & Security
+            <div className=" ml-1 contact-item flex-1 min-w-[35%] lg:min-w-0 text-center lg:text-right">
+              <span className="contact-label block lg:text-lg text-xs ml-[-6px] font-semibold text-white mb-4 tracking-wider whitespace-nowrap">
+              
+                FIH Traffic &<br/>Security Division
               </span>
               <div className="space-y-6 text-sm">
                 <div className="contact-detail flex items-center justify-center lg:mr-8 mr-5 lg:justify-end   text-gray-300">

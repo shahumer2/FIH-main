@@ -272,7 +272,7 @@ const resumeAutoPlay = () => setIsAutoPlaying(true);
               <img
                 src={`/img/pes/${num}.png`}
                 alt={`Gallery image ${num}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = 'https://via.placeholder.com/800x450?text=Image+Not+Found';

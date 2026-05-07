@@ -221,9 +221,9 @@ const CrowdAndTrafficc = () => {
 
                   <div className="relative z-10 flex items-center justify-center">
                     <img
-                      src='/img/batch.png'
+                      src='/img/batchh.png'
                       alt="Security Batch"
-                      className="w-64 h-64 lg:w-72 lg:h-72 object-contain drop-shadow-2xl"
+                      className="w-64 h-64 lg:w-72 lg:h-102 object-contain drop-shadow-2xl"
                     />
                   </div>
 
@@ -435,26 +435,29 @@ const CrowdAndTrafficc = () => {
 
             {/* Main Image Display */}
             <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-gray-100 aspect-video">
-              <div
-                className="flex transition-transform duration-500 ease-out h-full"
-                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-              >
-                {[1, 2, 3, 4, 5].map((num) => (
-                  <div
-                    key={num}
-                    className="w-full flex-shrink-0 h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900"
-                  >
-                    <img
-                      src={`/img/sec/${num}.png`}
-                      alt={`Gallery image ${num}`}
-                      className="w-full h-full object-cover"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = 'https://via.placeholder.com/800x450?text=Image+Not+Found';
-                      }}
-                    />
-                  </div>
-                ))}
+              {/* Parent container with fixed height */}
+              <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
+                <div
+                  className="flex transition-transform duration-500 ease-out h-full"
+                  style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                  {[1, 2, 3, 4, 5].map((num) => (
+                    <div
+                      key={num}
+                      className="w-full flex-shrink-0 h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900"
+                    >
+                      <img
+                        src={`/img/sec/${num}.png`}
+                        alt={`Gallery image ${num}`}
+                        className="w-full h-full object-contain" // This won't crop
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = 'https://via.placeholder.com/800x450?text=Image+Not+Found';
+                        }}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Image Counter Badge */}

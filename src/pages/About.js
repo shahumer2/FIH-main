@@ -9,13 +9,32 @@ function About() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50" >
       <Navbar />
-      <section className="pt-32 pb-40  text-white" style={{ backgroundColor: "#204b29" }}>
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative pt-60 pb-60 text-white overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+          style={{
+            backgroundImage: "url('/img/sec/2.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
+
+        {/* Content */}
+        <div className="relative z-20 max-w-7xl mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-3 ">About FIH</h1>
-            <p className="text-2xl text-blue-100 max-w-3xl mt-8 mx-auto text-white bg-clip-text text-transparent">
-              Focus Integrated Healthcare (FIH)
-            </p>
+
+            {/* Glassmorphism Heading */}
+            <div className="inline-block backdrop-blur-sm bg-white/10 border border-white/20 rounded-2xl px-10 py-6 shadow-2xl">
+              <h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">
+                About FIH
+              </h1>
+              <div className="w-16 h-1 bg-gradient-to-r from-teal-400 to-blue-400 rounded-full mx-auto mt-4"></div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -115,58 +134,58 @@ function About() {
         <div className="relative py-20 bg-gradient-to-br from-gray-50 to-blue-50">
           <div className="max-w-7xl mx-auto px-4">
             {/* Main Heading */}
-         <div className="text-center mb-16">
-  <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-500 to-purple-900 bg-clip-text text-transparent mb-6">
-    The Integrated IFM Advantage
-  </h2>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-500 to-purple-900 bg-clip-text text-transparent mb-6">
+                The Integrated IFM Advantage
+              </h2>
 
-  <p className="text-xl text-gray-600 font-semibold mb-4">
-    One Vision. One Partner. Total Integration.
-  </p>
+              <p className="text-xl text-gray-600 font-semibold mb-4">
+                One Vision. One Partner. Total Integration.
+              </p>
 
-  <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
-    Managing multiple vendors often leads to communication gaps, inefficiencies, and duplicated costs.
-    At Focus Integrated Healthcare (FIH), our Integrated Facility Management (IFM) model eliminates
-    these silos by providing a single point of accountability. We unify all service verticals into a
-    seamless ecosystem that enhances efficiency, reduces overhead, and ensures consistent service delivery.
-  </p>
+              <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed mb-8">
+                Managing multiple vendors often leads to communication gaps, inefficiencies, and duplicated costs.
+                At Focus Integrated Healthcare (FIH), our Integrated Facility Management (IFM) model eliminates
+                these silos by providing a single point of accountability. We unify all service verticals into a
+                seamless ecosystem that enhances efficiency, reduces overhead, and ensures consistent service delivery.
+              </p>
 
-  <div className="max-w-4xl mx-auto text-left space-y-4">
+              <div className="max-w-4xl mx-auto text-left space-y-4">
 
-    <div className="flex items-start">
-      <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-      <p className="text-gray-700">
-        <span className="font-semibold">Cross-Service Synergy:</span> Our teams work collaboratively—
-        security identifies maintenance risks, while cleaning teams detect early pest activity—ensuring nothing is overlooked.
-      </p>
-    </div>
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">
+                    <span className="font-semibold">Cross-Service Synergy:</span> Our teams work collaboratively—
+                    security identifies maintenance risks, while cleaning teams detect early pest activity—ensuring nothing is overlooked.
+                  </p>
+                </div>
 
-    <div className="flex items-start">
-      <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-      <p className="text-gray-700">
-        <span className="font-semibold">Operational Cost Savings:</span> Consolidated contracts reduce
-        administrative burden and unlock economies of scale across services.
-      </p>
-    </div>
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">
+                    <span className="font-semibold">Operational Cost Savings:</span> Consolidated contracts reduce
+                    administrative burden and unlock economies of scale across services.
+                  </p>
+                </div>
 
-    <div className="flex items-start">
-      <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-      <p className="text-gray-700">
-        <span className="font-semibold">Centralized Reporting:</span> A unified dashboard provides
-        a 360° view of operations—from security incidents to resource consumption.
-      </p>
-    </div>
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">
+                    <span className="font-semibold">Centralized Reporting:</span> A unified dashboard provides
+                    a 360° view of operations—from security incidents to resource consumption.
+                  </p>
+                </div>
 
-    <div className="flex items-start">
-      <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
-      <p className="text-gray-700">
-        <span className="font-semibold">Consistent Service Standards:</span> Every FIH team operates
-        under a unified culture of excellence, ensuring reliability across all service lines.
-      </p>
-    </div>
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">
+                    <span className="font-semibold">Consistent Service Standards:</span> Every FIH team operates
+                    under a unified culture of excellence, ensuring reliability across all service lines.
+                  </p>
+                </div>
 
-  </div>
-</div>
+              </div>
+            </div>
 
             {/* Services Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -223,7 +242,7 @@ function About() {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold bg-gradient-to-r from-green-900 to-blue-400 bg-clip-text text-transparent mb-2">
-                     Integrated Pest Management (IPM) |Proactive Bio-Security & Vector Control
+                      Integrated Pest Management (IPM) |Proactive Bio-Security & Vector Control
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
                       Provide reliable Pest Control and Fumigation services designed to
