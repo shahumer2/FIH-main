@@ -102,13 +102,13 @@ function Navbar() {
               <img
                 src="/img/logoGreen.png"
                 alt="FIH Logo"
-                className={`h-18 w-auto transition-all duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0 absolute'
+                className={`h-20 w-auto transition-all duration-300 ${isScrolled ? 'opacity-100' : 'opacity-0 absolute'
                   }`}
               />
               <img
                 src="/img/logo.png"
                 alt="FIH Logo"
-                className={`h-18 w-auto transition-all duration-300 ${isScrolled ? 'opacity-0 absolute' : 'opacity-100'
+                className={`h-20 w-auto transition-all duration-300 ${isScrolled ? 'opacity-0 absolute' : 'opacity-100'
                   }`}
               />
             </Link>

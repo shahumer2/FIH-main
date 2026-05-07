@@ -400,9 +400,9 @@ function Home() {
             <div className="absolute left-1/2 -translate-x-1/2 top-1/2 w-24 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent"></div>
 
             <p
-              className={`text-sm md:text-3xl font-light tracking-wide relative inline-block px-8 transition-transform duration-100 ${isVibrating ? 'animate-vibrate' : ''
+              className={`text-xs md:text-3xl font-light tracking-wide relative inline-block px-8 transition-transform duration-100 ${isVibrating ? 'animate-vibrate' : ''
                 }`}
-              style={{ textShadow: '0 0 5px rgba(255, 255, 255, 0.7)', fontSize: '2.5rem' }}
+              style={{ textShadow: '0 0 5px rgba(255, 255, 255, 0.7)', fontSize: '2rem' }}
             >
               “Seamless Secure Sustainable”
             </p>
@@ -822,20 +822,20 @@ function Home() {
             <div className="mt-10 pt-6 border-t border-white/10">
               <div className="flex flex-col items-end">
                 <div className="text-right">
-                  <p className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-blue-300">
+                  {/* <p className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-blue-300">
                     — Dr. Matthew Yap, COO
-                  </p>
+                  </p> */}
                   <div className="h-px w-32 bg-gradient-to-r from-teal-400 to-transparent mt-2 ml-auto"></div>
                 </div>
               </div>
             </div>
 
             {/* Decorative bottom icon */}
-            <div className="flex justify-center mt-8">
+            {/* <div className="flex justify-center mt-8">
               <svg className="w-6 h-6 text-white/20" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
               </svg>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -941,138 +941,71 @@ function Home() {
 
 
 
-      <section id="video-section" className="py-16 bg-gradient-to-br from-gray-900 to-slate-800">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">Our Videos</h2>
-            <p className="text-gray-300">Watch our facilities management solutions in action</p>
-          </div>
+    <section id="video-section" className="py-16 bg-gradient-to-br from-gray-900 to-slate-800">
+  <div className="max-w-6xl mx-auto px-4">
+    <div className="text-center mb-10">
+      <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">Our Videos</h2>
+      <p className="text-gray-300">Watch our facilities management solutions in action</p>
+    </div>
 
-          {/* Simple HTML5 Video Carousel */}
-          <div className="relative overflow-hidden rounded-2xl bg-black/30">
-            {/* Video Slides */}
-            <div
-              className="flex transition-transform duration-300"
-              style={{ transform: `translateX(-${currentVideoSlide * 100}%)` }}
-            >
-              {/* Video Slide 1 */}
-              <div className="w-full flex-shrink-0 p-4">
-                <div className="relative">
-                  {/* Playing Indicator */}
-                  <div className={`absolute top-4 left-4 z-20 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center transition-opacity duration-300 ${currentVideoSlide === 0 ? 'opacity-100' : 'opacity-0'
-                    }`}>
-                    <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
-                    Now Playing
-                  </div>
-
-                  <div className="bg-black rounded-xl overflow-hidden shadow-2xl">
-                    <video
-                      ref={(el) => (videoRefs.current[0] = el)}
-                      controls
-                      preload="metadata"
-                      className="w-full h-auto max-h-[500px]"
-                      onPlay={() => {
-                        setCurrentVideoSlide(0);
-                        // Pause the other video if it's playing
-                        if (videoRefs.current[1]) {
-                          videoRefs.current[1].pause();
-                          videoRefs.current[1].currentTime = 0;
-                        }
-                      }}
-                      playsInline
-                    >
-                      <source src="/videos/fih1.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                    <div className="p-6 bg-gradient-to-r from-gray-900 to-black">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Company Overview</h3>
-                      <p className="text-gray-300">A comprehensive look at FIH's integrated facilities management</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Video Slide 2 */}
-              <div className="w-full flex-shrink-0 p-4">
-                <div className="relative">
-                  {/* Playing Indicator */}
-                  <div className={`absolute top-4 left-4 z-20 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold flex items-center transition-opacity duration-300 ${currentVideoSlide === 1 ? 'opacity-100' : 'opacity-0'
-                    }`}>
-                    <span className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></span>
-                    Now Playing
-                  </div>
-
-                  <div className="bg-black rounded-xl overflow-hidden shadow-2xl">
-                    <video
-                      ref={(el) => (videoRefs.current[1] = el)}
-                      controls
-                      preload="metadata"
-                      className="w-full h-auto max-h-[500px]"
-                      onPlay={() => {
-                        setCurrentVideoSlide(1);
-                        // Pause the other video if it's playing
-                        if (videoRefs.current[0]) {
-                          videoRefs.current[0].pause();
-                          videoRefs.current[0].currentTime = 0;
-                        }
-                      }}
-                      playsInline
-                    >
-                      <source src="/videos/fih2.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                    <div className="p-6 bg-gradient-to-r from-gray-900 to-black">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2">Our Process in Action</h3>
-                      <p className="text-gray-300">See how our teams deliver security, cleaning, and pest control services</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Simple Navigation Controls */}
-            <div className="flex justify-center items-center mt-6 space-x-4">
-              <button
-                onClick={handleVideoPrev}
-                className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors flex items-center"
-              >
-                <ChevronLeft className="w-5 h-5 mr-1" />
-                Previous
-              </button>
-
-              <div className="flex space-x-2">
-                <button
-                  onClick={() => goToVideoSlide(0)}
-                  className={`w-3 h-3 rounded-full transition-all ${currentVideoSlide === 0 ? 'bg-white scale-125' : 'bg-white/30'
-                    }`}
-                  aria-label="Go to video 1"
-                />
-                <button
-                  onClick={() => goToVideoSlide(1)}
-                  className={`w-3 h-3 rounded-full transition-all ${currentVideoSlide === 1 ? 'bg-white scale-125' : 'bg-white/30'
-                    }`}
-                  aria-label="Go to video 2"
-                />
-              </div>
-
-              <button
-                onClick={handleVideoNext}
-                className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors flex items-center"
-              >
-                Next
-                <ChevronRight className="w-5 h-5 ml-1" />
-              </button>
-            </div>
-          </div>
-
-          {/* Auto-play Notice */}
-          {/* <div className="mt-6 p-4 bg-blue-900/20 rounded-lg">
-            <p className="text-blue-300 text-sm text-center">
-              <span className="font-semibold">Note:</span> First video auto-plays. Browser may require one click to enable sound.
-            </p>
-          </div> */}
+    {/* Two Videos Side by Side */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      {/* Video 1 */}
+      <div className="bg-black rounded-xl overflow-hidden shadow-2xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+        <div className="relative">
+          <video
+            ref={(el) => (videoRefs.current[0] = el)}
+            controls
+            preload="metadata"
+            className="w-full h-auto max-h-[350px] object-cover"
+            onPlay={() => {
+              if (videoRefs.current[1]) {
+                videoRefs.current[1].pause();
+                videoRefs.current[1].currentTime = 0;
+              }
+            }}
+            playsInline
+          >
+            <source src="/videos/fih1.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
-      </section>
+        <div className="p-5 bg-gradient-to-r from-gray-900 to-black">
+          <h3 className="text-lg md:text-xl font-bold text-white mb-2">Company Overview</h3>
+          <p className="text-gray-400 text-sm">A comprehensive look at FIH's integrated facilities management</p>
+        </div>
+      </div>
+
+      {/* Video 2 */}
+      <div className="bg-black rounded-xl overflow-hidden shadow-2xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
+        <div className="relative">
+          <video
+            ref={(el) => (videoRefs.current[1] = el)}
+            controls
+            preload="metadata"
+            className="w-full h-auto max-h-[350px] object-cover"
+            onPlay={() => {
+              if (videoRefs.current[0]) {
+                videoRefs.current[0].pause();
+                videoRefs.current[0].currentTime = 0;
+              }
+            }}
+            playsInline
+          >
+            <source src="/videos/fih2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div className="p-5 bg-gradient-to-r from-gray-900 to-black">
+          <h3 className="text-lg md:text-xl font-bold text-white mb-2">Our Process in Action</h3>
+          <p className="text-gray-400 text-sm">See how our teams deliver security, cleaning, and pest control services</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* Strategic Partners */}
       <section className="py-20 bg-white">
