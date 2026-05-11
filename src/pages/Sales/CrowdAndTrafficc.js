@@ -25,11 +25,11 @@ const CrowdAndTrafficc = () => {
 
   // Carousel Functions
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % 5);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % 2);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + 5) % 5);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + 2) % 2);
   };
 
   const goToSlide = (index) => {
@@ -41,7 +41,7 @@ const CrowdAndTrafficc = () => {
     if (isAutoPlaying) {
       autoPlayRef.current = setInterval(() => {
         nextSlide();
-      }, 4000); // Change slide every 4 seconds
+      }, 4000);
     }
     return () => clearInterval(autoPlayRef.current);
   }, [isAutoPlaying, currentIndex]);
@@ -49,6 +49,7 @@ const CrowdAndTrafficc = () => {
   // Pause auto-play on hover
   const pauseAutoPlay = () => setIsAutoPlaying(false);
   const resumeAutoPlay = () => setIsAutoPlaying(true);
+  
   const services = [
     {
       icon: <Shield className="w-8 h-8" />,
@@ -57,7 +58,7 @@ const CrowdAndTrafficc = () => {
         "We provide proactive risk assessment and threat mitigation strategies that minimize potential hazards before they occur. Our team identifies vulnerabilities, implements safety protocols, and ensures operational continuity for all types of environments.",
       features: [
         "Comprehensive risk assessments",
-        "Incident prevention planning",
+       
         "Strategic threat management"
       ]
     },
@@ -67,7 +68,7 @@ const CrowdAndTrafficc = () => {
       description:
         "Our experienced officers manage crowd dynamics at concerts, sports events, and public gatherings to ensure the safety and comfort of all attendees. We specialize in smooth ingress/egress flow and incident-free crowd behavior monitoring.",
       features: [
-        "Pre-event risk evaluation",
+       
         "Flow and density control",
         "Emergency crowd response protocols"
       ]
@@ -80,7 +81,7 @@ const CrowdAndTrafficc = () => {
       features: [
         "On-site emergency coordination",
         "Medical & evacuation assistance",
-        "Collaboration with local authorities"
+       
       ]
     },
     {
@@ -89,7 +90,7 @@ const CrowdAndTrafficc = () => {
       description:
         "Our operations follow internationally recognized safety standards and continuous training programs. We promote best practices in all aspects of fieldwork to ensure safety compliance and service excellence.",
       features: [
-        "ISO & MOM safety compliance",
+       
         "Standard Operating Procedures (SOPs)",
         "Continuous improvement initiatives"
       ]
@@ -102,75 +103,21 @@ const CrowdAndTrafficc = () => {
       features: [
         "Real-time traffic supervision",
         "Pedestrian safety assurance",
-        "Adaptive route management"
+       
       ]
     },
-    {
-      icon: <School className="w-8 h-8" />,
-      title: "Trained & Certified Personnel",
-      description:
-        "All our officers are professionally trained, licensed, and certified under industry and government standards. Regular refresher courses guarantee up-to-date knowledge in safety, security, and emergency response protocols.",
-      features: [
-        "WSQ-certified & licensed personnel",
-        "Continuous skill development",
-        "Professional conduct & discipline"
-      ]
-    }
+    // {
+    //   icon: <School className="w-8 h-8" />,
+    //   title: "Trained & Certified Personnel",
+    //   description:
+    //     "All our officers are professionally trained, licensed, and certified under industry and government standards. Regular refresher courses guarantee up-to-date knowledge in safety, security, and emergency response protocols.",
+    //   features: [
+    //     "WSQ-certified & licensed personnel",
+    //     "Continuous skill development",
+    //     "Professional conduct & discipline"
+    //   ]
+    // }
   ];
-
-  // const services = [
-  //   {
-  //     icon: <Building className="w-8 h-8" />,
-  //     title: "Hospitality & Attraction",
-  //     description: "Ensuring smooth pickups/drop-offs, guiding vehicles, and maintaining clear driveways for venues like Marina Bay Sands & Gardens By The Bay",
-  //     features: ["Touting enforcement", "Data-informed strategy", "Enhanced visitor experience"]
-  //   },
-  //   {
-  //     icon: <Shield className="w-8 h-8" />,
-  //     title: "Escort Services",
-  //     description: "Professional security escorts for various needs including ATM maintenance and executive protection",
-  //     features: ["ATM Repair & Maintenance", "Vendor/Customer Escort", "Executive Protection"]
-  //   },
-  //   {
-  //     icon: <Shield className="w-8 h-8" />,
-  //     title: "Outrider Services",
-  //     description: "VIP escort services for high net worth individuals, VIPs, and artists with high visibility equipment",
-  //     features: ["High visibility motorcycles", "Professional trained officers", "24/7 availability"]
-  //   },
-  //   {
-  //     icon: <Users className="w-8 h-8" />,
-  //     title: "Crowd Control - Retail/Commercial",
-  //     description: "Field-proven crowd control solutions for retail spaces and commercial areas",
-  //     features: ["Zero incidence standard", "Physical boundaries", "Risk assessment"]
-  //   },
-  //   {
-  //     icon: <Award className="w-8 h-8" />,
-  //     title: "Large Scale Events",
-  //     description: "Comprehensive security for live music, sports, exhibitions, and conventions",
-  //     features: ["Extensive coordination", "Safety protocols", "Positive public experience"]
-  //   },
-  //   {
-  //     icon: <Car className="w-8 h-8" />,
-  //     title: "Road Works & Public Streets",
-  //     description: "Fully trained and licensed traffic marshals for construction projects and public roads",
-  //     features: ["Traffic control plans", "Safety compliance", "Minimal disruptions"]
-  //   },
-  //   {
-  //     icon: <School className="w-8 h-8" />,
-  //     title: "Educational Zones",
-  //     description: "Traffic management for schools during pick-up and drop-off times",
-  //     features: ["Student safety", "Traffic regulation", "School zone management"]
-  //   },
-  //   {
-  //     icon: <Package className="w-8 h-8" />,
-  //     title: "High Value Package Security",
-  //     description: "Secure transportation for valuable items below SGD$250,000 threshold",
-  //     features: ["Specialized vehicles", "GPS tracking", "Trained Security Transport Operators"]
-  //   }
-  // ];
-
-
-
 
   const clients = [
     "Marina Bay Sands", "Gardens By The Bay", "ION Orchard", "Maris Stella High School",
@@ -184,19 +131,19 @@ const CrowdAndTrafficc = () => {
       author: "Project Engineer, Hi Power"
     },
     {
-      quote: "We are satisfied and confident with . FIH traffic regulating work and their Safety-First approach is very respectful.",
+      quote: "We are satisfied and confident with FIH traffic regulating work and their Safety-First approach is very respectful.",
       author: ""
     },
     {
-      quote: "We are privileged to work with an experience AFIH Management staff with both strategic and tactical perspectives.",
+      quote: "We are privileged to work with an experienced FIH Management staff with both strategic and tactical perspectives.",
       author: "Keith It, Director, Office of Campus Security, NUS"
     },
     {
-      quote: "AFIH Team is quick to address key concern & issues to meet our demanding business needs, while remains flexible in responding to changing expectation, is a commendable effort.",
+      quote: "FIH Team is quick to address key concern & issues to meet our demanding business needs, while remains flexible in responding to changing expectation, is a commendable effort.",
       author: "Tome Oh, COO, TS Group"
     },
     {
-      quote: "Great Service! All I can say is that Traffic@AFIH has one of the best operational procedures and the staff are top notch.",
+      quote: "Great Service! All I can say is that FIH has one of the best operational procedures and the staff are top notch.",
       author: "Project Coordinator, NCB Contractor"
     }
   ];
@@ -299,7 +246,7 @@ const CrowdAndTrafficc = () => {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section - Updated for Security */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -307,47 +254,55 @@ const CrowdAndTrafficc = () => {
             {/* Left Content */}
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                Traffic & Crowd Management: Smart Mobility Control
+                Integrated Security Solutions: Proactive Protection & Risk Management
               </h2>
 
               <p className="text-lg text-gray-600 mb-4 font-semibold">
-                Intelligent Flow Control & Public Safety Assurance
+                Intelligence-Driven Security & Asset Protection
               </p>
 
               <p className="text-lg text-gray-600 mb-6">
-                At FIH, we deliver structured and responsive traffic and crowd management solutions
-                designed to ensure safety, efficiency, and seamless mobility across events,
-                infrastructure projects, and high-density environments. Our approach integrates
-                trained personnel with real-time monitoring systems to minimize risks and disruptions.
+                At FIH, we deliver comprehensive security solutions designed to protect your assets, 
+                personnel, and reputation. Our approach integrates highly trained security professionals 
+                with advanced technology to create a layered defense strategy that adapts to evolving threats. 
+                We move beyond traditional guard services to provide intelligence-led security that anticipates 
+                and neutralizes risks before they materialize.
               </p>
 
               <div className="space-y-4">
 
                 <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <ShieldCheck className="w-6 h-6 text-emerald-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700">
-                    Event & Crowd Flow Optimization – Safe movement planning for large-scale events and public gatherings.
+                    24/7 Professional Guarding Services – Highly trained security officers for corporate, residential, and industrial facilities.
                   </p>
                 </div>
 
                 <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <Target className="w-6 h-6 text-emerald-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700">
-                    Traffic Diversion & Route Control – Efficient rerouting strategies to reduce congestion and hazards.
+                    Risk Assessment & Security Audits – Comprehensive vulnerability analysis and mitigation planning.
                   </p>
                 </div>
 
                 <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <Camera className="w-6 h-6 text-emerald-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700">
-                    Real-Time Monitoring & Incident Response – Rapid coordination for emergencies and dynamic situations.
+                    CCTV Surveillance & Access Control – Integrated technology solutions for continuous monitoring and restricted area management.
                   </p>
                 </div>
 
                 <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <Zap className="w-6 h-6 text-emerald-500 mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700">
-                    Worksite & Convoy Safety Management – Compliance-driven solutions for infrastructure and logistics operations.
+                    Emergency Response & Crisis Management – Rapid deployment teams trained for immediate incident response.
+                  </p>
+                </div>
+
+                <div className="flex items-start">
+                  <Heart className="w-6 h-6 text-emerald-500 mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">
+                    Concierge & Customer-Facing Security – Professional officers who balance security with exceptional service.
                   </p>
                 </div>
 
@@ -357,16 +312,33 @@ const CrowdAndTrafficc = () => {
             {/* Right Card */}
             <div className="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl p-8">
               <div className="text-center">
-                <Target className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
+                <Shield className="w-16 h-16 text-emerald-600 mx-auto mb-4" />
 
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Operational Excellence
+                  Our Security Commitment
                 </h3>
 
-                <p className="text-gray-700 italic">
-                  "Delivering safe, efficient, and controlled environments through precision planning
-                  and proactive management."
+                <p className="text-gray-700 italic mb-6">
+                  "Delivering proactive, intelligence-led security solutions that protect what matters most — 
+                  your people, assets, and peace of mind."
                 </p>
+
+                <div className="border-t border-emerald-200 pt-4 mt-4">
+                  <div className="flex justify-center space-x-4">
+                    <div className="text-center">
+                      {/* <p className="text-2xl font-bold text-emerald-700">500+</p> */}
+                      <p className="text-xs text-gray-600">Trained Officers</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-xs text-gray-600">Command Center</p>
+                      <p className="text-2xl font-bold text-emerald-700">24/7</p>
+                    </div>
+                    <div className="text-center">
+                      {/* <p className="text-2xl font-bold text-emerald-700">100+</p> */}
+                      <p className="text-xs text-gray-600">Client Sites</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -374,46 +346,40 @@ const CrowdAndTrafficc = () => {
         </div>
       </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* Testimonials */}
-      {/* <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Client Testimonials</h2>
-            <p className="text-lg text-gray-600">What our valued clients say about our services</p>
+      {/* Services Grid Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our <span className="text-emerald-600">Security Services</span>
+            </h2>
+            <div className="w-20 h-1 bg-emerald-500 mx-auto rounded-full"></div>
+            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+              Comprehensive security solutions tailored to your specific needs
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                  ))}
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                <div className="text-emerald-600 mb-4 group-hover:scale-110 transition-transform">
+                  {service.icon}
                 </div>
-                <p className="text-gray-700 italic mb-4">"{testimonial.quote}"</p>
-                {testimonial.author && (
-                  <p className="text-gray-900 font-semibold">{testimonial.author}</p>
-                )}
+                <h3 className="text-xl font-bold text-gray-800 mb-3">{service.title}</h3>
+                <p className="text-gray-600 mb-4">{service.description}</p>
+                <ul className="space-y-2">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-sm text-gray-500">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 mr-2" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
-      </section> */}
-
-      {/* Valued Clients */}
+      </section>
 
       {/* Carousel Section */}
       <section className="py-16 bg-gradient-to-b from-white to-gray-50">
@@ -435,13 +401,12 @@ const CrowdAndTrafficc = () => {
 
             {/* Main Image Display */}
             <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-gray-100 aspect-video">
-              {/* Parent container with fixed height */}
               <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
                 <div
                   className="flex transition-transform duration-500 ease-out h-full"
                   style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                 >
-                  {[1, 2, 3, 4, 5].map((num) => (
+                  {[1, 2].map((num) => (
                     <div
                       key={num}
                       className="w-full flex-shrink-0 h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900"
@@ -449,7 +414,7 @@ const CrowdAndTrafficc = () => {
                       <img
                         src={`/img/sec/${num}.png`}
                         alt={`Gallery image ${num}`}
-                        className="w-full h-full object-contain" // This won't crop
+                        className="w-full h-full object-contain"
                         onError={(e) => {
                           e.target.onerror = null;
                           e.target.src = 'https://via.placeholder.com/800x450?text=Image+Not+Found';
@@ -462,7 +427,7 @@ const CrowdAndTrafficc = () => {
 
               {/* Image Counter Badge */}
               <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-sm px-3 py-1 rounded-full">
-                {currentIndex + 1} / 5
+                {currentIndex + 1} / 2
               </div>
             </div>
 
@@ -489,7 +454,7 @@ const CrowdAndTrafficc = () => {
 
             {/* Dots Indicator */}
             <div className="flex justify-center gap-3 mt-6">
-              {[0, 1, 2, 3, 4].map((index) => (
+              {[0, 1].map((index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
@@ -504,7 +469,7 @@ const CrowdAndTrafficc = () => {
 
             {/* Thumbnail Navigation */}
             <div className="flex justify-center gap-2 mt-6 overflow-x-auto pb-2">
-              {[1, 2, 3, 4, 5].map((num, idx) => (
+              {[1, 2].map((num, idx) => (
                 <button
                   key={num}
                   onClick={() => goToSlide(idx)}
@@ -529,8 +494,6 @@ const CrowdAndTrafficc = () => {
         </div>
       </section>
 
-
-      {/* Contact Section */}
       {/* Footer Section */}
       <section style={{
         background: 'linear-gradient(135deg, #1a202c 0%, #2d3748 100%)',
