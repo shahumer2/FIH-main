@@ -52,14 +52,14 @@ function Services() {
     },
     {
       icon: <Bug className="w-8 h-8" />,
-      title: "Pest Control & Fumigation",
-      description: "Complete pest management and fumigation services for all types of facilities",
+      title: "Integrated Pest Management",
+      description: "Complete pest management ",
       image: "/img/pes/1.png",
       color: "orange",
       features: [
         "General Pest Control Services",
         "Integrated Termite Control Inspection / Treatment",
-        "Fumigation Services: ISPM 15, PH3, BMSB",
+        "Vector Control & Wildlife Management",
         // "Commodities / Vessel Fumigation",
         // "Larvicide & Fogging Services",
         // "Bird Control Measures"
