@@ -381,11 +381,11 @@ const CrowdAndTrafficc = () => {
         </div>
       </section>
 
-      {/* Carousel Section */}
+     
       <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4">
 
-          {/* Section Header */}
+        
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Our <span className="text-emerald-600">Gallery</span>
@@ -396,10 +396,9 @@ const CrowdAndTrafficc = () => {
             </p>
           </div>
 
-          {/* Carousel Container */}
+        
           <div className="relative max-w-5xl mx-auto">
 
-            {/* Main Image Display */}
             <div className="relative overflow-hidden rounded-2xl shadow-2xl bg-gray-100 aspect-video">
               <div className="relative w-full h-96 md:h-[500px] lg:h-[600px] overflow-hidden">
                 <div
@@ -425,13 +424,13 @@ const CrowdAndTrafficc = () => {
                 </div>
               </div>
 
-              {/* Image Counter Badge */}
+             
               <div className="absolute bottom-4 right-4 bg-black/60 backdrop-blur-sm text-white text-sm px-3 py-1 rounded-full">
                 {currentIndex + 1} / 2
               </div>
             </div>
 
-            {/* Navigation Buttons */}
+       
             <button
               onClick={prevSlide}
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none"

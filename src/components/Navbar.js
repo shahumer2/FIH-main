@@ -199,14 +199,14 @@ function Navbar() {
             {/* Emergency Contact - Desktop */}
             <div className="hidden lg:flex items-center space-x-4">
               <a
-                href="tel:+6589520327"
+                href="tel:+6584002919"
                 className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 flex items-center gap-2 ${isScrolled
                     ? 'bg-green-600 text-white hover:bg-green-700'
                     : 'bg-white text-green-600 hover:bg-gray-100'
                   }`}
               >
                 <Phone className="w-4 h-4" />
-                Call: +65 8952-0327
+                Call: +65 8400-2919
               </a>
             </div>
 
