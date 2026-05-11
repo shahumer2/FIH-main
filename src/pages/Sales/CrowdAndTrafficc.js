@@ -64,7 +64,7 @@ const CrowdAndTrafficc = () => {
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Event & Crowd Management",
+      title: "Crowd Management",
       description:
         "Our experienced officers manage crowd dynamics at concerts, sports events, and public gatherings to ensure the safety and comfort of all attendees. We specialize in smooth ingress/egress flow and incident-free crowd behavior monitoring.",
       features: [
@@ -97,11 +97,11 @@ const CrowdAndTrafficc = () => {
     },
     {
       icon: <Car className="w-8 h-8" />,
-      title: "Traffic & Safety Monitoring",
+      title: "Safety Monitoring",
       description:
-        "We deliver professional traffic management and monitoring solutions for construction zones, road closures, and public events. Our officers ensure minimal disruption and the highest safety for motorists and pedestrians.",
+        "We deliver professional monitoring solutions for construction zones, road closures, and public events. Our officers ensure minimal disruption and the highest safety for motorists and pedestrians.",
       features: [
-        "Real-time traffic supervision",
+       
         "Pedestrian safety assurance",
        
       ]

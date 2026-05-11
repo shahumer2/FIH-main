@@ -8,20 +8,33 @@ function Services() {
   const services = [
     {
       icon: <Shield className="w-8 h-8" />,
-      title: "Security Guardforce",
-      description: "Comprehensive security solutions integrated with advanced technology for complete protection",
+      title: "Security & Crowd Control",
+      description: "Safe escort of client's personnel and fleet assets islandwide to ensure secure transport and arrival. Safety of other road users is paramount to avoid convoy disruption and delays.",
       image: "/img/sec/2.png",
       color: "blue",
       features: [
-        "Event & Crowd Management",
-        "Emergency Response Support",
-        "Escort & Convoy Services",
-        "Controlled Route Access",
-        "Roving Security Responsive Support",
-        "Traffic & Safety Monitoring",
-        "Centralised 24-hr Facility Ops Centre"
+        "Rapid Incident Response",
+        "Security Guardforce Provision",
+        "Trained Licensed Security Officers",
+        
       ],
       url: "/services/security-crowd-control"
+    },
+    {
+      icon: <TrafficCone className="w-8 h-8" />,
+      title: "Traffic & Event Management",
+      description: "Efficient traffic control, road diversions, and vigilant supervision to safeguard the public from potential risks and hazards",
+      image: "/img/sec/4.png",
+      color: "green",
+      features: [
+        "Traffic Flow Control",
+        "Event Traffic Planning",
+        "Escort & Outriders Services",
+        // "Trained & Certified Personnel",
+        // "Crowd Movement Management",
+        // "Safety & Compliance & Best Practices"
+      ],
+      url: "/services/traffic-event-management"
     },
     {
       icon: <Sparkles className="w-8 h-8" />,
@@ -30,7 +43,7 @@ function Services() {
       image: "/img/clean/5.png",
       color: "green",
       features: [
-        "Commercial & Healthcare Facilities Cleaning",
+        // "Commercial & Healthcare Facilities Cleaning",
         "External Facade & At-Height Cleaning & Restoration",
         "Customised Cleaning Services",
         "Specialised Cleaning Services (e.g. Upholstery & Carpet)"
@@ -47,9 +60,9 @@ function Services() {
         "General Pest Control Services",
         "Integrated Termite Control Inspection / Treatment",
         "Fumigation Services: ISPM 15, PH3, BMSB",
-        "Commodities / Vessel Fumigation",
-        "Larvicide & Fogging Services",
-        "Bird Control Measures"
+        // "Commodities / Vessel Fumigation",
+        // "Larvicide & Fogging Services",
+        // "Bird Control Measures"
       ],
       url: "/services/pest-control"
     },
@@ -63,8 +76,8 @@ function Services() {
         "Landscape Planting & Maintenance",
         "Arboriculture & Landscape Consultancy",
         "Plant Supply, Rental and Vertical Gardens",
-        "Irrigation System Installation & Soil Management",
-        "Pond Maintenance & Water Features"
+        // "Irrigation System Installation & Soil Management",
+        // "Pond Maintenance & Water Features"
       ],
       url: "/services/landscaping"
     }
@@ -108,11 +121,11 @@ function Services() {
   ];
 
   return (
-   <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
       <Navbar />
 
       {/* Header Section */}
-      <section className="pt-32 pb-40  text-white" style={{backgroundColor:"#204b29"}}>
+      <section className="pt-32 pb-40  text-white" style={{ backgroundColor: "#204b29" }}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
@@ -196,9 +209,9 @@ function Services() {
                       <div className="absolute inset-0 bg-black/30"></div>
 
                       {/* Icon Container */}
-                    <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 relative z-10">
-  {service.icon}
-</div>
+                      <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 relative z-10">
+                        {service.icon}
+                      </div>
                     </div>
 
                     {/* Service Badge */}
@@ -290,7 +303,7 @@ function Services() {
           </Link>
         </div>
       </section>
-        <Footer/>
+      <Footer />
     </div>
   );
 }

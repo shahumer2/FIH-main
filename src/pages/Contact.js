@@ -117,7 +117,7 @@ function Contact() {
                     <div>
                       <h3 className="font-semibold text-gray-900">Phone Number</h3>
                       <div className="text-gray-700 space-y-1 mt-1">
-                        <div>+65 8952-0327</div>
+                        <div>+65 8400-2919</div>
                       </div>
                     </div>
                   </div>

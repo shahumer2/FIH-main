@@ -9,7 +9,10 @@ import {
   ShieldCheck,
   Navigation,
   Eye,
-  BarChart3
+  BarChart3,
+  Route,
+  Navigation2,
+  Flag
 } from 'lucide-react';
 import Navbar from '../../components/Navbar';
 import { FaPhoneAlt } from 'react-icons/fa';
@@ -54,90 +57,39 @@ const Traficc = () => {
   const trafficServices = [
     {
       icon: <TrafficCone className="w-8 h-8" />,
-      title: "Traffic Flow Control",
+      title: "TRAFFIC FLOW CONTROL",
       description:
-        "Professional traffic management ensuring smooth vehicle movement, reduced congestion, and enhanced safety across construction zones, events, and public roads. Our trained officers implement adaptive traffic plans that respond to real-time conditions.",
-      // features: [
-      //   "Real-time traffic supervision & rerouting",
-      //   "Construction zone traffic management",
-      //   "Peak-hour flow optimization",
-      //   "Pedestrian-vehicle conflict reduction"
-      // ]
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Crowd Movement Management",
-      description:
-        "Structured crowd dynamics management for events, public spaces, and high-density environments. We ensure safe ingress/egress, prevent bottlenecks, and maintain orderly movement through strategic positioning and real-time monitoring.",
-      // features: [
-      //   "Crowd density monitoring & control",
-      //   "Entry/exit flow management",
-      //   "Queue management systems",
-      //   "Emergency evacuation coordination"
-      // ]
+        "Professional traffic management ensuring smooth vehicle movement, reduced congestion, and enhanced safety across construction zones, events, and public roads. Our trained officers implement adaptive traffic plans that respond to real-time conditions, including road diversions and vigilant supervision."
     },
     {
       icon: <Navigation className="w-8 h-8" />,
-      title: "Event Traffic Planning",
+      title: "EVENT TRAFFIC PLANNING",
       description:
-        "Comprehensive traffic plans for events of all scales — from community gatherings to large-scale festivals. We coordinate with organizers, authorities, and stakeholders to design seamless traffic flow strategies.",
-      // features: [
-      //   "Pre-event traffic impact assessment",
-      //   "Route planning & signage strategy",
-      //   "VIP & emergency vehicle access",
-      //   "Post-event dispersal management"
-      // ]
+        "Comprehensive traffic plans for events of all scales — from community gatherings to large-scale festivals. We coordinate with organizers, authorities, and stakeholders to design seamless traffic flow strategies, including route planning, signage strategy, and VIP access management."
     },
     {
-      icon: <ShieldCheck className="w-8 h-8" />,
-      title: "Safety & Compliance",
+      icon: <Car className="w-8 h-8" />,
+      title: "ESCORT & OUTRIDERS SERVICES",
       description:
-        "All operations strictly adhere to Singapore's safety regulations and industry best practices. Our protocols are designed to protect workers, motorists, pedestrians, and event attendees at all times.",
-      // features: [
-      //   "LTA & MOM compliance",
-      //   "Workplace Safety & Health (WSH) standards",
-      //   "Regular safety audits",
-      //   "Incident reporting & investigation"
-      // ]
+        "Professional vehicle escort services for VIPs, high-profile individuals, artists, and valuable cargo. Our trained outriders provide high-visibility escort with advanced communication systems, ensuring safe and timely arrival at destinations."
     },
     {
-      icon: <Eye className="w-8 h-8" />,
-      title: "Real-Time Monitoring",
+      icon: <Users className="w-8 h-8" />,
+      title: "TRAINED & CERTIFIED PERSONNEL",
       description:
-        "Advanced monitoring capabilities enable proactive traffic and crowd management. Our command structure supports instant communication, live situation updates, and rapid response to changing conditions.",
-      // features: [
-      //   "Live traffic condition monitoring",
-      //   "Rapid incident response",
-      //   "Communication with ground teams",
-      //   "Data-driven decision making"
-      // ]
+        "All traffic marshals and officers are fully trained, licensed, and certified under Singapore's regulatory framework (WSQ-certified). Continuous professional development ensures the highest service standards, professional conduct, and discipline."
     },
+    // {
+    //   icon: <Eye className="w-8 h-8" />,
+    //   title: "SAFETY & COMPLIANCE",
+    //   description:
+    //     "All operations strictly adhere to Singapore's safety regulations (LTA & MOM compliance) and industry best practices. Our protocols are designed to safeguard workers, motorists, and event attendees from potential risks and hazards at worksites, work convoys, and major event venues."
+    // },
     {
       icon: <Award className="w-8 h-8" />,
-      title: "Trained & Certified Personnel",
+      title: "BEST PRACTICES",
       description:
-        "All traffic marshals and crowd control officers are fully trained, licensed, and certified under Singapore's regulatory framework. Continuous professional development ensures the highest service standards.",
-      // features: [
-      //   "WSQ-certified traffic marshals",
-      //   "Crowd control licensing",
-      //   "Regular refresher training",
-      //   "Professional conduct & discipline"
-      // ]
-    }
-  ];
-
-  const testimonials = [
-    {
-      quote: "Ashtree demonstrated the ability to understand the complexities, while respecting the individual stakeholder's concerns and interests.",
-      author: "Project Engineer, Hi Power"
-    },
-    {
-      quote: "We are satisfied and confident with FIH traffic regulating work and their Safety-First approach is very respectful.",
-      author: "Operations Manager, Construction Firm"
-    },
-    {
-      quote: "Great Service! All I can say is that Traffic@FIH has one of the best operational procedures and the staff are top notch.",
-      author: "Project Coordinator, NCB Contractor"
+        "We implement internationally recognized best practices in traffic management, including Standard Operating Procedures (SOPs), regular safety audits, incident reporting, and continuous improvement initiatives to ensure service excellence."
     }
   ];
 
@@ -145,7 +97,7 @@ const Traficc = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-green-50">
       <Navbar />
 
-      {/* Hero Section - NO BADGE */}
+      {/* Hero Section */}
       <section className="pt-20 pb-16 text-white" style={{ backgroundColor: "#204b29" }}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -162,7 +114,7 @@ const Traficc = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-white font-semibold text-lg">Professional Traffic Solutions</p>
+                    <p className="text-white font-semibold text-lg">Traffic & Event Management</p>
                   </div>
                 </div>
               </div>
@@ -171,20 +123,20 @@ const Traficc = () => {
             {/* Right Side - Content */}
             <div className="lg:pl-2">
               <span className="inline-block px-3 py-1 bg-green-500/20 text-green-300 text-xs font-semibold rounded-full mb-4">
-                Traffic & Crowd Management
+                Traffic & Event Management
               </span>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                Smart Mobility Control:
+                Efficient Traffic Control & 
                 <span className="bg-gradient-to-r from-green-300 via-green-300 to-sky-300 bg-clip-text text-transparent">
-                  {" "}Safe & Efficient Flow
+                  {" "}Event Management
                 </span>
               </h1>
 
               <p className="text-lg text-green-100/90 leading-relaxed mb-6 max-w-xl">
-                At FIH, we deliver structured traffic and crowd management solutions designed 
-                to ensure safety, efficiency, and seamless mobility across events, construction 
-                zones, and high-density public environments.
+                Efficient traffic control, road diversions, and vigilant supervision to safeguard the public 
+                from potential risks and hazards. Compliant with stringent safety standards at worksites, 
+                work convoys, and major event venues.
               </p>
 
               {/* Key Stats */}
@@ -197,17 +149,17 @@ const Traficc = () => {
                   <p className="text-2xl font-bold text-green-300">100%</p>
                   <p className="text-xs text-green-100/70">Safety Compliance</p>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
+                {/* <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 text-center">
                   <p className="text-2xl font-bold text-green-300">500+</p>
                   <p className="text-xs text-green-100/70">Projects Managed</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid Section */}
+      {/* Services Grid Section - OUR SERVICES */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -215,15 +167,15 @@ const Traficc = () => {
               What We Offer
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Traffic & Crowd Management Services
+              OUR SERVICES
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-green-500 to-green-500 rounded-full mx-auto"></div>
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              Comprehensive solutions for safe, efficient traffic flow and crowd control
+              Comprehensive traffic and event management solutions tailored to your needs
             </p>
           </div>
 
-          {/* Services Grid */}
+          {/* Services Grid - 3 columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {trafficServices.map((service, index) => (
               <div
@@ -235,19 +187,11 @@ const Traficc = () => {
                     <span className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-green-400 to-green-500 rounded-xl flex items-center justify-center text-white shadow-md">
                       {service.icon}
                     </span>
-                    <h4 className="font-bold text-gray-800 text-sm md:text-base">{service.title}</h4>
+                    <h4 className="font-bold text-gray-800 text-sm md:text-sm">{service.title}</h4>
                   </div>
-                  <p className="text-xs md:text-sm text-gray-600 mb-4 leading-relaxed">
+                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
-                  {/* <ul className="space-y-2">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-gray-600">
-                        <CheckCircle className="w-3.5 h-3.5 text-green-500 mt-0.5 flex-shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul> */}
                 </div>
               </div>
             ))}
@@ -255,7 +199,7 @@ const Traficc = () => {
         </div>
       </section>
 
-      {/* About / Value Proposition Section */}
+      {/* About / Value Proposition Section - Why Choose Us */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -263,7 +207,7 @@ const Traficc = () => {
             {/* Left Content */}
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-                Why Choose Our Traffic & Crowd Management?
+                Why Choose Our Traffic & Event Management?
               </h2>
 
               <div className="space-y-4">
@@ -272,17 +216,18 @@ const Traficc = () => {
                     title: "Proven Track Record",
                     desc: "Successfully managed traffic for major construction projects, public events, and high-security venues across Singapore."
                   },
-                  {
-                    title: "Certified Expertise",
-                    desc: "All personnel are WSQ-certified and undergo continuous professional development to stay current with regulations."
-                  },
+               
                   {
                     title: "Rapid Deployment",
                     desc: "24/7 standby teams ready for immediate deployment to handle emergencies or last-minute requirements."
                   },
                   {
+                    title: "Safety-First Approach",
+                    desc: "We prioritize safety at all times, implementing stringent safety standards at worksites, work convoys, and major event venues."
+                  },
+                  {
                     title: "Technology-Enabled",
-                    desc: "Real-time monitoring and communication systems ensure coordinated responses and proactive management."
+                    desc: "Real-time monitoring and communication systems ensure coordinated responses and proactive traffic management."
                   }
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3 bg-white p-4 rounded-xl shadow-sm">
@@ -301,16 +246,27 @@ const Traficc = () => {
             {/* Right Card */}
             <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-8 text-white">
               <div className="text-center">
-                <Target className="w-16 h-16 text-green-200 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Operational Excellence</h3>
+                <ShieldCheck className="w-16 h-16 text-green-200 mx-auto mb-4" />
+                <h3 className="text-2xl font-bold mb-4">Safety Compliance</h3>
                 <p className="text-green-100 italic mb-6">
-                  "Delivering safe, efficient, and controlled environments through precision planning 
-                  and proactive management."
+                  "Compliant with stringent safety standards at worksites, work convoys, and major event venues."
                 </p>
-                <div className="border-t border-green-400/30 pt-6 mt-6">
-                  <p className="text-3xl font-bold">99.9%</p>
-                  <p className="text-green-200 text-sm">Incident-Free Rate</p>
-                </div>
+                {/* <div className="border-t border-green-400/30 pt-6 mt-6">
+                  <div className="flex justify-around">
+                    <div>
+                      <p className="text-2xl font-bold">LTA</p>
+                      <p className="text-green-200 text-xs">Compliant</p>
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold">MOM</p>
+                      <p className="text-green-200 text-xs">Compliant</p>
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold">WSQ</p>
+                      <p className="text-green-200 text-xs">Certified</p>
+                    </div>
+                  </div>
+                </div> */}
               </div>
             </div>
 
@@ -327,7 +283,7 @@ const Traficc = () => {
             </h2>
             <div className="w-20 h-1 bg-green-500 mx-auto rounded-full"></div>
             <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-              Showcasing our professional traffic and crowd management services in action
+              Showcasing our professional traffic and event management services in action
             </p>
           </div>
 
@@ -338,7 +294,7 @@ const Traficc = () => {
                   className="flex transition-transform duration-500 ease-out h-full"
                   style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                 >
-                  {[ 2, 3, 4, 5].map((num) => (
+                  {[2, 3, 4, 5].map((num) => (
                     <div
                       key={num}
                       className="w-full flex-shrink-0 h-full flex items-center justify-center bg-gradient-to-br from-gray-800 to-gray-900"
@@ -383,7 +339,7 @@ const Traficc = () => {
 
             {/* Dots */}
             <div className="flex justify-center gap-3 mt-6">
-              {[ 1, 2, 3, 4].map((index) => (
+              {[0, 1, 2, 3].map((index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
@@ -397,7 +353,7 @@ const Traficc = () => {
 
             {/* Thumbnails */}
             <div className="flex justify-center gap-2 mt-6 overflow-x-auto pb-2">
-              {[ 2, 3, 4, 5].map((num, idx) => (
+              {[2, 3, 4, 5].map((num, idx) => (
                 <button
                   key={num}
                   onClick={() => goToSlide(idx)}
@@ -417,31 +373,6 @@ const Traficc = () => {
           </div>
         </div>
       </section>
-
-      {/* Testimonials */}
-      {/* <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-            <div className="w-16 h-1 bg-green-500 mx-auto rounded-full"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-6 hover:shadow-lg transition-shadow border border-gray-100">
-                <div className="flex items-center mb-4">
-                  {[...Array(4)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-700 italic text-sm mb-4 leading-relaxed">"{testimonial.quote}"</p>
-                {testimonial.author && (
-                  <p className="text-gray-900 font-semibold text-sm">{testimonial.author}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* Footer */}
       <section style={{
